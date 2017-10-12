@@ -8,6 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <StackPanel>
+            <TextBlock Text="{x:Bind DisplayTemperature, Mode=OneWay}" FontSize="50"/>
+            <TextBlock Text="{x:Bind DisplayHumidity, Mode=OneWay}" FontSize="50"/>
+        </StackPanel>
     </Grid>
 </Page>
