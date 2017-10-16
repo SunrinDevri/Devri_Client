@@ -16,6 +16,10 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
+using Windows.Devices.Gpio;
+using Windows.Devices.Sensors.Temperature;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 // 빈 페이지 항목 템플릿에 대한 설명은 https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x412에 나와 있습니다.
 
@@ -79,6 +83,21 @@ namespace Devri
         public MainPage()
         {
             this.InitializeComponent();
+            Read();
+        }
+
+        public async void Read()
+        {
+            var gpio = GpioController.GetDefault();
+            var dataPin = gpio.OpenPin(5);
+            var sensor = new DHT11(dataPin, SensorTypes.DHT11);
+            for (int i = 1; i < 100; i++)
+            {
+                var humidity = await sensor.ReadHumidity();
+                var temperature = await sensor.ReadTemperature(false);
+                Debug.WriteLine(temperature);
+                await Task.Delay(2000);
+            }
         }
     }
 }
