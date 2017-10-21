@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\BindablePage.cs" />
+    <Compile Include="Common\Feeling.cs" />
     <Compile Include="Driver\DHTDriver.cs" />
     <Compile Include="Driver\SensorTypes.cs" />
     <Compile Include="MainPage.xaml.cs">
