@@ -52,6 +52,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <OutputPath>bin\ARM\Release\</OutputPath>
@@ -99,6 +100,10 @@
     <Compile Include="Common\Feeling.cs" />
     <Compile Include="Driver\DHTDriver.cs" />
     <Compile Include="Driver\SensorTypes.cs" />
+    <Compile Include="GPS\GroundPosit.cs" />
+    <Compile Include="Interact\ServerCommunication.cs" />
+    <Compile Include="Interact\VoiceAct.cs" />
+    <Compile Include="Interact\VoicetoText.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -109,6 +114,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Devri_TemporaryKey.pfx" />
+    <None Include="Resources\Scripts.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
@@ -119,6 +125,10 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Resources\devri_angry.gif" />
+    <Content Include="Resources\devri_Confused.gif" />
+    <Content Include="Resources\devri_normal.gif" />
+    <Content Include="Resources\devri_smile.gif" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -144,7 +154,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
     <Folder Include="Skype\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

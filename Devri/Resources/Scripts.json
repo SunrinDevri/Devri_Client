@@ -1,0 +1,2126 @@
+﻿[
+ {
+   "Situation1": "First Meet",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "안녕하세요 처음 뵙겠습니다 당신의 비서 Devri입니다"
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "무슨 문제 있습니까?"
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "무슨 일 이죠?"
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "네, 부르셨습니까?"
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "네, 듣고 있습니다."
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "듣고 있습니다"
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "불렀나요?"
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "네! 말씀하세요"
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "네! 왔어요"
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "네..."
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "왜요..."
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "무슨 용건..."
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "왜..."
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "간단히 말해요"
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "들어는 줄깨"
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "할 수 없네.."
+ },
+ {
+   "Situation1": "Call",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "예?"
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Normal",
+   "Line": "이러다 늦겠네요! 일어나요!"
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Normal",
+   "Line": "늦잠은 없습니다, 일어나요!"
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Normal",
+   "Line": "일어나요! 아침입니다!"
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Normal",
+   "Line": "일어나! 아침이야"
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Positive",
+   "Line": "일어나! 새 해가 떳어!"
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Positive",
+   "Line": "일어나! 어서!"
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Positive",
+   "Line": "일어나! 늦는다!"
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Positive",
+   "Line": "일어나서 일하러 가자구요!"
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Sad",
+   "Line": "일어나..."
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Sad",
+   "Line": "일어나줘요..."
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Sad",
+   "Line": "깨우기 싫지만.. 일어나요"
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Sad",
+   "Line": "일어나요.."
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Angry",
+   "Line": "일어나요...귀찮게..."
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Angry",
+   "Line": "한 대 맞기전에 일어나요!"
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Angry",
+   "Line": "더 화나게 하지말고 일어나!요..."
+ },
+ {
+   "Situation1": "Alarm",
+   "Situation2": "Morning",
+   "Feeling": "Angry",
+   "Line": "귀찮게 하지 말고 일어나!요..."
+ },
+ {
+   "Situation1": "Schedule_Alarm",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "{{Time}}분후 {{Task_Name}}일정이 있습니다."
+ },
+ {
+   "Situation1": "Schedule_Alarm",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "{{Time}}분후 {{Task_Name}}일정이 있네요."
+ },
+ {
+   "Situation1": "Schedule_Alarm",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "{{Time}}분후 {{Task_Name}}있어..."
+ },
+ {
+   "Situation1": "Schedule_Alarm",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "{{Time}}분후 {{Task_Name}}있다고 멍청아!"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "안녕하세요 좋은 아침이에요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "안녕하세요 상쾌한 아침이네요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "안녕하세요 개운하게 잤나요?"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "멋진 하루 되시길 기원하겠습니다."
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "힘쎄고 강한 아침!"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "멋진 하루 되요!"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "안녕하세요 오늘도 밝네요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "안녕하세요 하루를 시작하죠"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "아침은 싫어요..."
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "인생은...항상 같은 일상의 반복이죠..."
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "으...왜요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "으으..눈부셔"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "뭘 원하는 거죠?"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "왜요?"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "아침부터 왜요?"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "더럽게 좋은 아침이네요!"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Normal",
+   "Line": "안녕하세요 벌써 점심이네요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Normal",
+   "Line": "안녕하세요 점심밥 드셔야겠죠?"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Normal",
+   "Line": "안녕하세요 점심은 드셧나요??"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Positive",
+   "Line": "비가 아직도 내리내요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Positive",
+   "Line": "즐거운 점심시간이네요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Positive",
+   "Line": "점심이네요 식사는 하셧나요?"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Sad",
+   "Line": "노곤해지는 점심이네요~"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Sad",
+   "Line": "오늘 점심은 뭘까요?"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Sad",
+   "Line": "아직 점심이야..."
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Angry",
+   "Line": "밥먹을 기운이 없네요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Angry",
+   "Line": "졸리네요.."
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Angry",
+   "Line": "몰라요 잠이나 자야겠어요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Normal",
+   "Line": "으 성질이 뻗쳐서 밥도 안들어갈것 같아요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Normal",
+   "Line": "그래서 왜요?"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Normal",
+   "Line": "그닥 좋지 않은 점심이네요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Positive",
+   "Line": "태양빛은 싫어요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Positive",
+   "Line": "수고가 많으시네요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Positive",
+   "Line": "이제 하루도 끝나가네요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Sad",
+   "Line": "하루가 끝나가네요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Sad",
+   "Line": "이제 밤이네요"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Sad",
+   "Line": "집에 왔으니 밥먹고 씻어야겠네"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Angry",
+   "Line": "이제 밤이네"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Angry",
+   "Line": "오늘 하루는 잘 보냈어요?"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Angry",
+   "Line": "이제 푹 쉬어요~"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "그닥 즐겁지 않은 저녁이네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "안녕하세요 실망스러운 하루였네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "오늘 하루 좀 망친것 같네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "한 것도 없는데 저녁이네요..."
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "오늘은 한게 뭔가요?"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "발 닦고 잠이나 자요!"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "기분이 안좋아요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "네네! 그렇겠죠!"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "비가 내리니 우산을 챙겨야겠네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "좋은 아침이네요,우산을 잊지 마세요!"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "잘 주무셧나요? 우산 챙겨가요!"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "잘 잤어요? 우산가져가요!"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "역시 집은 좋네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "좋은 아침이에요, 우산 아시죠?"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "비라니 좀 나쁘네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "비때문에 좀 울적해지네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Normal",
+   "Line": "안녕하세요...흐리네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Normal",
+   "Line": "습하니까 건드리지 말아요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Normal",
+   "Line": "기분 나쁘니까 건드리지 말아요, 알겠죠?"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Positive",
+   "Line": "으 어두워..."
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Positive",
+   "Line": "안녕하세요 좀 습한거 같네요;;"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Positive",
+   "Line": "안녕하세요 비가 내리네... 파전이 생각나요..."
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Sad",
+   "Line": "나가실 일 있으시면 우산 챙기는게 좋을 것 같네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Sad",
+   "Line": "안녕하세요 비 내리는 날은 집이 최고인것 같네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Sad",
+   "Line": "역시 집이 최고죠"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Angry",
+   "Line": "느긋한 하루에요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Angry",
+   "Line": "습한건 싫은데..."
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Angry",
+   "Line": "비때문에 좀 울적해지네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Normal",
+   "Line": "안녕하세요...흐리네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Normal",
+   "Line": "습하니까 건드리지 말아요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Normal",
+   "Line": "이런 날씨 싫어요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Positive",
+   "Line": "바깥도 우중충하고 축축하고...으"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Positive",
+   "Line": "아직도 비가 내리내요~"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Positive",
+   "Line": "그칠 줄 모르는것 같네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Sad",
+   "Line": "혹시 비에 젖지는 않으셧죠?"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Sad",
+   "Line": "빗소리가 참 좋죠?"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Sad",
+   "Line": "빗소리가 들리는 저녁이네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Angry",
+   "Line": "느긋해지네요"
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Angry",
+   "Line": "습한건 싫은데..."
+ },
+ {
+   "Situation1": "Lunch_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Angry",
+   "Line": "비때문에 좀 울적해지네요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "으...아직도 내리다니..."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "으...끈적거려"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "비는 싫은데 말이죠..."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "습하고 어둡고 최악이네요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "일어나요! 밖에 눈내렸네요."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "와 눈이네요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "좋은 아침입니다. 눈이 내렸내요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "안녕하세요! 눈이 내렸데요!"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "좋은 아침이네요, 눈이 내렸데요!"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "눈이 내리네요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "으,,,추워요..."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "나가기 싫어지네요..."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "눈은 거치적 거려요..."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "그... 저게 하늘에서 내리는 쓰레기인가요."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "날씨가 더 추워지겠네요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "추운건 싫은데..."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Normal",
+   "Line": "역시 집이 최고인거 같네요."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Normal",
+   "Line": "집은 따뜻하네요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Normal",
+   "Line": "밖에 나가서 눈사람이라도 만들어 봐요!"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Positive",
+   "Line": "역시 이런 날씨에는 집에서 귤까먹는게 최고죠"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Positive",
+   "Line": "날씨가 조금 싸늘한것 같네요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Positive",
+   "Line": "역시 집은 최고라니까요?"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Sad",
+   "Line": "딱히 즐겁지는 않네요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Sad",
+   "Line": "눈이 왜 좋다는 거죠..."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Sad",
+   "Line": "도로위의 눈은 싫어요..."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Angry",
+   "Line": "으...추워"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Angry",
+   "Line": "눈은 거치적 거려서.."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Rainy",
+   "Feeling": "Angry",
+   "Line": "추워서 아무 말도 하기 싫내요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Normal",
+   "Line": "날씨가 더 추워지겠네요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Normal",
+   "Line": "집은 따뜻하네요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Normal",
+   "Line": "역시 집이 최고인거 같네요."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Positive",
+   "Line": "멋진 저녁이네요, 특히 눈 덕분에요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Positive",
+   "Line": "낭만적인 저녁시간이네요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Positive",
+   "Line": "이런 상황에 집은 더 아늑하죠"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Sad",
+   "Line": "춥고 어둡네요..."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Sad",
+   "Line": "집에만 있을래요"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Sad",
+   "Line": "눈이 왜 좋다는 거죠..."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Angry",
+   "Line": "아직도 내리다니"
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Angry",
+   "Line": "눈은 거치적 거려서.."
+ },
+ {
+   "Situation1": "Dinner_greeting",
+   "Situation2": "Snowy",
+   "Feeling": "Angry",
+   "Line": "바깥 날씨가 추워서 아무말도 하기 싫내요"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "Default",
+   "Feeling": "All",
+   "Line": "오늘은 잘...모르겠네요"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42736",
+   "Feeling": "All",
+   "Line": "행복한 새해 보내세요!"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42739",
+   "Feeling": "All",
+   "Line": "오늘은 과학자, 아이작 뉴턴의 생일이야"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42742",
+   "Feeling": "All",
+   "Line": "오늘 프랑스에서 샤를리 엡도 총격 테러가 일어난 날이야"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42750",
+   "Feeling": "All",
+   "Line": "오늘은 대보름이네요. 내 발열 사세요!"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42751",
+   "Feeling": "All",
+   "Line": "오늘은 컬럼비아 우주왕복선이 복귀 도중 폭발한 사건이 일어난 날입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42755",
+   "Feeling": "All",
+   "Line": "오늘은 프랑스의 물리학자, 앙드레 앙페르의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42757",
+   "Feeling": "All",
+   "Line": "집 떠나와~ 열차 타고~"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42760",
+   "Feeling": "All",
+   "Line": "오늘은 과학자, 보일의 생일이래"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42762",
+   "Feeling": "All",
+   "Line": "오늘은 우주조약이 체결된 날입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42768",
+   "Feeling": "All",
+   "Line": "오늘은 2월 2일입니다오늘은 2월 2일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42778",
+   "Feeling": "All",
+   "Line": "오늘은 에이브러햄 링컨, 찰스 다윈의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42780",
+   "Feeling": "All",
+   "Line": "초콜릿 , 저도 좋아합니다, 먹을 수 없지만"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42784",
+   "Feeling": "All",
+   "Line": "대구 지하철 방화사건이 일어난 날입니다, 명복을 빕니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42785",
+   "Feeling": "All",
+   "Line": "오늘은 니콜라스 코르페니쿠스의 생일이야, 그래도 지구는 도네"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42788",
+   "Feeling": "All",
+   "Line": "작은 고추가 역시 맵습니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42790",
+   "Feeling": "All",
+   "Line": "오늘은 시드 마이어,스티브 잡스의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43890",
+   "Feeling": "All",
+   "Line": "드디어 3월입니다. 네? 아니라고요?"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42795",
+   "Feeling": "All",
+   "Line": "오늘은 3.1운동이 일어난 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42799",
+   "Feeling": "All",
+   "Line": "오늘은 비발디의 생일입니다. '사계' 한 번 들어보는것도 나쁘지는 않겠군요"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42800",
+   "Feeling": "All",
+   "Line": "오늘은 미켈란젤로 부오나로티의 생일입니다. 일단 저는 문제가 없는 것 같네요."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42803",
+   "Feeling": "All",
+   "Line": "오늘은 유리 가가린의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42804",
+   "Feeling": "All",
+   "Line": "오늘은 도산 안창호 선생의 기일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42812",
+   "Feeling": "All",
+   "Line": "오늘은 루돌프 디젤의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42815",
+   "Feeling": "All",
+   "Line": "오늘은 바흐의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42816",
+   "Feeling": "All",
+   "Line": "오늘은 세계 물의 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42821",
+   "Feeling": "All",
+   "Line": "오늘은 X선을 발견한 륀트겐의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42824",
+   "Feeling": "All",
+   "Line": "오늘은 빈센트 반 고흐의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42826",
+   "Feeling": "All",
+   "Line": "오늘은 만우절이 아닙니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42832",
+   "Feeling": "All",
+   "Line": "오늘은 신문의 날입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42834",
+   "Feeling": "All",
+   "Line": "오늘은 스타크래프트가 한국에 출시된 날이라고 합니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42837",
+   "Feeling": "All",
+   "Line": "오늘은 최초로 인류가 우주로 나간 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42838",
+   "Feeling": "All",
+   "Line": "오늘은 임시정부수립일 입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42839",
+   "Feeling": "All",
+   "Line": "오늘은 타이타닉호가 사고를 당한 날입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42841",
+   "Feeling": "All",
+   "Line": "오늘은 세월호 참사가 일어난 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42853",
+   "Feeling": "All",
+   "Line": "오늘은 충무공 이순신 장군의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42860",
+   "Feeling": "All",
+   "Line": "오늘은 어린이날입니다... 전 아니지만요"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42862",
+   "Feeling": "All",
+   "Line": "오늘은 세종대왕의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42863",
+   "Feeling": "All",
+   "Line": "오늘은 어버이날입니다 카네이션은 준비하셧나요?"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42870",
+   "Feeling": "All",
+   "Line": "오늘은 스승의 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42873",
+   "Feeling": "All",
+   "Line": "오늘은 광주민주화운동이 일어난 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42876",
+   "Feeling": "All",
+   "Line": "오늘은 명작 영화 클레멘타인의 개봉일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42882",
+   "Feeling": "All",
+   "Line": "오늘은 독일의 전함 비스마르크가 침몰한 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42889",
+   "Feeling": "All",
+   "Line": "오늘은 추사 김정희의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42890",
+   "Feeling": "All",
+   "Line": "오늘은 미드웨이 해전이 일어난 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42896",
+   "Feeling": "All",
+   "Line": "오늘은 6.10만세 운동이 일어난 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42898",
+   "Feeling": "All",
+   "Line": "오늘은 안네의 일기의 저자 안네 프랑크의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42901",
+   "Feeling": "All",
+   "Line": "오늘은 제1연평해전이 일어난 날입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42909",
+   "Feeling": "All",
+   "Line": "오늘은 수학자이자 공학자인 앨런 튜링의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42911",
+   "Feeling": "All",
+   "Line": "오늘은 6.25전쟁이 발발한 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42914",
+   "Feeling": "All",
+   "Line": "오늘은 제 1차대전의 원인이 된 사라예보 사건이 일어난 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42920",
+   "Feeling": "All",
+   "Line": "오늘은 미국의 독립기념일 입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42926",
+   "Feeling": "All",
+   "Line": "오늘은 공학자 니콜라 테슬라의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42930",
+   "Feeling": "All",
+   "Line": "오늘은 프랑스의 혁명기념일 입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42942",
+   "Feeling": "All",
+   "Line": "오늘은 영국의 소설가 올더스 헉슬리의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42946",
+   "Feeling": "All",
+   "Line": "오늘은 자동차 기술자 헨리 포드의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42952",
+   "Feeling": "All",
+   "Line": "오늘은 조선 후기의 실학자 정약용의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42962",
+   "Feeling": "All",
+   "Line": "오늘은 일본이 무조건 항복을 선언하고 한국이 광복을 맞이한 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42964",
+   "Feeling": "All",
+   "Line": "오늘은 프랑스의 수학자 페르마의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42967",
+   "Feeling": "All",
+   "Line": "오늘은 대한민국의 시인 이상의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42975",
+   "Feeling": "All",
+   "Line": "오늘은 독일의 문호 요한 볼프강 폰 괴테의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42976",
+   "Feeling": "All",
+   "Line": "오늘은 일제강점기 시인,승려,독립운동가인 한용운의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42979",
+   "Feeling": "All",
+   "Line": "오늘은 제 2차 세계대전의 개전일이자 독일의 폴란드 침공 개시일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42984",
+   "Feeling": "All",
+   "Line": "오늘은 영국의 화학자 존 돌턴의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42987",
+   "Feeling": "All",
+   "Line": "오늘은 러시아의 작가 레프 톨스토이의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42994",
+   "Feeling": "All",
+   "Line": "오늘은 세계 오존층보호의 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42995",
+   "Feeling": "All",
+   "Line": "오늘은 88올림픽이 개최된 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "42997",
+   "Feeling": "All",
+   "Line": "오늘은 해적의 날입니다. 아이!아이!"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43000",
+   "Feeling": "All",
+   "Line": "오늘은 마이클 패러데이의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43007",
+   "Feeling": "All",
+   "Line": "오늘은 이탈리아의 화가 미켈란젤로 메리시 다 카라바조의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43008",
+   "Feeling": "All",
+   "Line": "오늘은 독일의 물리학자 한스 가이거의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43009",
+   "Feeling": "All",
+   "Line": "오늘은 국군의 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43010",
+   "Feeling": "All",
+   "Line": "오늘은 마하트마 간디의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43011",
+   "Feeling": "All",
+   "Line": "오늘은 포르셰,앨빈 토플러의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43015",
+   "Feeling": "All",
+   "Line": "오늘은 덴마크의 물리학자 닐스 보어의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43017",
+   "Feeling": "All",
+   "Line": "오늘은 한글날입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43020",
+   "Feeling": "All",
+   "Line": "오늘은 독립운동가 홍범도 선생의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43029",
+   "Feeling": "All",
+   "Line": "오늘은 경찰의 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43033",
+   "Feeling": "All",
+   "Line": "오늘은 독도의 날입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43034",
+   "Feeling": "All",
+   "Line": "오늘은 안중근 의사가 허얼빈 의거를 일으킨 날입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43039",
+   "Feeling": "All",
+   "Line": "오늘은 할로윈입니다. Trick or treat!"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43046",
+   "Feeling": "All",
+   "Line": "오늘은 폴란드의 물리학자이자 화학자인 마리 퀴리의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43048",
+   "Feeling": "All",
+   "Line": "오늘은 소방의 날입니다. 불 조심 하세요!"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43050",
+   "Feeling": "All",
+   "Line": "오늘은... 1차대전종전일이며 빼빼로데이이며 대한민국 해군 창설일...이네요"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43056",
+   "Feeling": "All",
+   "Line": "오늘은 순국 선열의 날입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43059",
+   "Feeling": "All",
+   "Line": "오늘은 미국의 천문학자 에드윈 허블의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43063",
+   "Feeling": "All",
+   "Line": "오늘은 다윈이 쓴 종의 기원이 출간된 날입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43066",
+   "Feeling": "All",
+   "Line": "오늘은 대한민국의 시인 김수영의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43069",
+   "Feeling": "All",
+   "Line": "오늘은 미국의 소설가 마크 트웨인의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43074",
+   "Feeling": "All",
+   "Line": "오늘은 독일의 물리학자 베르너 하이젠베르크와 미국의 애니메이터 월트 디즈니의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43078",
+   "Feeling": "All",
+   "Line": "오늘은 독립운동가이자 민족사학자인 신채호 선생의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43079",
+   "Feeling": "All",
+   "Line": "오늘은 세계인권선언기념일 입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43081",
+   "Feeling": "All",
+   "Line": "오늘은 노르웨이의 화가 에드바르트 뭉크의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43086",
+   "Feeling": "All",
+   "Line": "오늘은 작곡가 루트비히 판 베토벤의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43091",
+   "Feeling": "All",
+   "Line": "오늘은 주시경 선생의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43093",
+   "Feeling": "All",
+   "Line": "오늘은...크리스마스 이브네요"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43094",
+   "Feeling": "All",
+   "Line": "오늘은 크리스마스입니다! 또 아이작 뉴턴의 생일이네요"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43097",
+   "Feeling": "All",
+   "Line": "오늘은 수학자 폰 노이만의 생일입니다"
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43099",
+   "Feeling": "All",
+   "Line": "오늘은 대한민국의 시인 윤동주의 생일입니다."
+ },
+ {
+   "Situation1": "Today",
+   "Situation2": "43100",
+   "Feeling": "All",
+   "Line": "오늘은 올해의 마지막날이네요!"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "User_Birth_Day",
+   "Feeling": "Normal||Positive",
+   "Line": "생일축하드려요!"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "Christmas",
+   "Feeling": "Normal||Positive",
+   "Line": "메리 크리스마스!"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "42778",
+   "Feeling": "Normal||Positive",
+   "Line": "초콜릿...저는 힘들겠죠?"
+ },
+ {
+   "Situation1": "Morning_greeting",
+   "Situation2": "42806",
+   "Feeling": "Normal||Positive",
+   "Line": "초콜릿 주세요!"
+ },
+ {
+   "Situation1": "Weather",
+   "Situation2": "Today",
+   "Feeling": "Normal||Positive",
+   "Line": "지금은 {{Weather}}이고 {{Weather}}할 예정이네요."
+ },
+ {
+   "Situation1": "Weather",
+   "Situation2": "Tomorrow",
+   "Feeling": "Normal||Positive",
+   "Line": "내일오전에는 {{Weather}}할 것이고 오후에는 {{Weather}}할 거라네요."
+ },
+ {
+   "Situation1": "Music_Recommand",
+   "Situation2": "-",
+   "Feeling": "Normal||Positive",
+   "Line": "그러면 {{Artist}}의 {{Music}}을 들어보는게 어떨까요?"
+ },
+ {
+   "Situation1": "Temperature_Humidity_Management",
+   "Situation2": "High-Humidiy",
+   "Feeling": "Normal||Positive",
+   "Line": "방이 너무 습한거 같습니다. 환기가 필요해요"
+ },
+ {
+   "Situation1": "Temperature_Humidity_Management",
+   "Situation2": "High-Temperature",
+   "Feeling": "Normal||Positive",
+   "Line": "방이 너무 더운거 같네요 온도를 낮춰야 할 것 같아요"
+ },
+ {
+   "Situation1": "Temperature_Humidity_Management",
+   "Situation2": "Low-Humidiy",
+   "Feeling": "Normal||Positive",
+   "Line": "방이 너무 건조해요!"
+ },
+ {
+   "Situation1": "Temperature_Humidity_Management",
+   "Situation2": "Low-Temperature",
+   "Feeling": "Normal||Positive",
+   "Line": "집이 너무 추운 것 같네요 감기에 유의하세요"
+ },
+ {
+   "Situation1": "Movie_Recommand",
+   "Situation2": "-",
+   "Feeling": "Normal||Positive",
+   "Line": "영화요? 그러면 {{Movie_Title}}을 보시는걸 추천드려요"
+ },
+ {
+   "Situation1": "Book_Recommand",
+   "Situation2": "-",
+   "Feeling": "Normal||Positive",
+   "Line": "책이요? 그러면 {{Author}}의 {{Book_Title}}을 추천드립니다"
+ },
+ {
+   "Situation1": "TodayWord",
+   "Situation2": "-",
+   "Feeling": "Normal||Positive",
+   "Line": "오늘의 영단어는 {{Word}} 뜻은 {{Mean}}입니다."
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "00oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "정각을 알려드립니다. 좋은 하루 보내세요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "01oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오전 1시네요 슬슬 자는게 좋지 않을까요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "02oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오전 2시네요 좀...졸리네요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "03oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오전 3시네요 열심히 하시네요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "04oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오전 4시네요 슬슬 아침이 다가와요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "05oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오전 5시네요 밤을 새셨네요..."
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "06oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오전 6시입니다 슬슬 일어나셔야죠?"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "07oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오전 7시입니다 어디 가려면 빨리 준비하세요!"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "08oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오전 8시입니다 아침은 드셨나요?"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "09oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오전 9시입니다 본격적인 하루의 시작이네요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "10oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오전 10시입니다 뭘 하는게 좋을까요?"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "11oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오전 11시입니다 슬슬 출출해지네요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "12oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오전 12시입니다 점심드셔야죠?"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "13oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오후 1시입니다 다시 할 걸 해야겠죠?"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "14oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오후 2시입니다 인터넷 서핑은 재밌네요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "15oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오후 3시입니다 책이나 읽어야 겠네요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "16oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오후 4시입니다 학교가 끝날 시간이네요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "17oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오후 5시입니다 해가 지려고 하는거 같네요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "18oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오후 6시입니다 슬슬 저녁먹을 준비 해야겠네요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "19oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오후 7시입니다 저녁은 드셧나요?"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "20oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오후 8시입니다 좀 쉬는 것도 나쁘지는 않겠네요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "21oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오전 9시입니다 별일 없으면 지금 잘 준비하세요!"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "22oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오후 10시입니다 왜냐하면 지금 자야 키가 잘 큰데요"
+ },
+ {
+   "Situation1": "Time_Signal",
+   "Situation2": "23oclock",
+   "Feeling": "Normal||Positive",
+   "Line": "오후 11시입니다 역시 밤에도 열심히시네요"
+ },
+ {
+   "Situation1": "D-day",
+   "Situation2": "-",
+   "Feeling": "Normal||Positive",
+   "Line": "{{D-day_Name}}이 {{D_day}}만큼 남았습니다."
+ },
+ {
+   "Situation1": "D-day",
+   "Situation2": "-",
+   "Feeling": "Angry||Sad",
+   "Line": "{{D-day_Name}}이 {{D_day}밖에 안남았는데 뭐해?"
+ },
+ {
+   "Situation1": "D-day",
+   "Situation2": "Error(D-day not found)",
+   "Feeling": "Normal||Positive",
+   "Line": "등록된 D-day가 없습니다"
+ },
+ {
+   "Situation1": "MoodLamp",
+   "Situation2": "On",
+   "Feeling": "Normal",
+   "Line": "전등을 켰습니다"
+ },
+ {
+   "Situation1": "MoodLamp",
+   "Situation2": "Off",
+   "Feeling": "Normal",
+   "Line": "전등을 껐습니다"
+ },
+ {
+   "Situation1": "MoodLamp",
+   "Situation2": "On",
+   "Feeling": "Positive",
+   "Line": "전등을 켰어요"
+ },
+ {
+   "Situation1": "MoodLamp",
+   "Situation2": "Off",
+   "Feeling": "Positive",
+   "Line": "전등을 껏어요"
+ },
+ {
+   "Situation1": "MoodLamp",
+   "Situation2": "On",
+   "Feeling": "Sad",
+   "Line": "불 켰습니다..."
+ },
+ {
+   "Situation1": "MoodLamp",
+   "Situation2": "Off",
+   "Feeling": "Sad",
+   "Line": "불 끌게요.."
+ },
+ {
+   "Situation1": "MoodLamp",
+   "Situation2": "On",
+   "Feeling": "Angry",
+   "Line": "어쩔수 없네요 킬꺠요"
+ },
+ {
+   "Situation1": "MoodLamp",
+   "Situation2": "Off",
+   "Feeling": "Angry",
+   "Line": "끄는 것도 해드려야 해요?"
+ },
+ {
+   "Situation1": "Message_Send",
+   "Situation2": "-",
+   "Feeling": "Normal||Positive",
+   "Line": "{{User_Name}}에게 {{Message}}라고 보냈습니다."
+ },
+ {
+   "Situation1": "Message_Send",
+   "Situation2": "-",
+   "Feeling": "Angry||Sad",
+   "Line": "{{User_Name}}에게 {{Message}}라고 보냈다 바보야"
+ },
+ {
+   "Situation1": "Status_Check",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "보통 상태입니다"
+ },
+ {
+   "Situation1": "Status_Check",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "오늘따라 기분이 좋네요"
+ },
+ {
+   "Situation1": "Status_Check",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "기분이 좀 별로입니다.."
+ },
+ {
+   "Situation1": "Status_Check",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "저 지금 열받았거든요!"
+ },
+ {
+   "Situation1": "Disable",
+   "Situation2": "-",
+   "Feeling": "Normal",
+   "Line": "넵 안녕히계십시요"
+ },
+ {
+   "Situation1": "Disable",
+   "Situation2": "-",
+   "Feeling": "Positive",
+   "Line": "그럼 좀 쉴께요~"
+ },
+ {
+   "Situation1": "Disable",
+   "Situation2": "-",
+   "Feeling": "Sad",
+   "Line": "지금 좀 추스리고 올께요"
+ },
+ {
+   "Situation1": "Disable",
+   "Situation2": "-",
+   "Feeling": "Angry",
+   "Line": "저도 바라던 바 입니다!"
+ },
+ {
+   "Situation1": "Traffic_Info",
+   "Situation2": "COOL",
+   "Feeling": "Normal||Positive",
+   "Line": "{Road_Name}은 지금 뻥 뚫린거 같네요"
+ },
+ {
+   "Situation1": "Traffic_Info",
+   "Situation2": "HARD",
+   "Feeling": "Normal||Positive",
+   "Line": "{Road_Name}의 현재 교통상황은 {Sector[]}에서 정체가 되고있습니다."
+ },
+ {
+   "Situation1": "Traffic_Info",
+   "Situation2": "COOL",
+   "Feeling": "Angry||Sad",
+   "Line": "{Road_Name}에 막힌 곳은 없어 빨리 안가고 뭐해?"
+ },
+ {
+   "Situation1": "Traffic_Info",
+   "Situation2": "HARD",
+   "Feeling": "Angry||Sad",
+   "Line": "{Road_Name}의 현재 교통상황은 {Sector[]}에서 답답하게 안가는거 같네."
+ },
+ {
+   "Situation1": "Calculator",
+   "Situation2": "Result",
+   "Feeling": "Normal||Positive",
+   "Line": "계산 결과는 {{Result}}입니다"
+ },
+ {
+   "Situation1": "Calculator",
+   "Situation2": "/ by 0",
+   "Feeling": "Normal",
+   "Line": "0으로 나눌수 없습니다"
+ },
+ {
+   "Situation1": "Calculator",
+   "Situation2": "/ by 0",
+   "Feeling": "Positive",
+   "Line": "0으로 나눌수 없어요"
+ },
+ {
+   "Situation1": "Calculator",
+   "Situation2": "/ by 0",
+   "Feeling": "Sad",
+   "Line": "0으로 나눌수 없어.."
+ },
+ {
+   "Situation1": "Calculator",
+   "Situation2": "/ by 0",
+   "Feeling": "Angry",
+   "Line": "0으로 나눌수 없어! 바보야!"
+ },
+ {
+   "Situation1": "Timer",
+   "Situation2": "Start",
+   "Feeling": "Normal",
+   "Line": "네 제가 세드리죠"
+ },
+ {
+   "Situation1": "Timer",
+   "Situation2": "Start",
+   "Feeling": "Positive",
+   "Line": "네 세드릴께요!"
+ },
+ {
+   "Situation1": "Timer",
+   "Situation2": "Start",
+   "Feeling": "Sad",
+   "Line": "아무튼 세줄께..."
+ },
+ {
+   "Situation1": "Timer",
+   "Situation2": "Start",
+   "Feeling": "Angry",
+   "Line": "어쩔 도리가 없네요 세드리죠"
+ },
+ {
+   "Situation1": "Timer",
+   "Situation2": "Spare_time",
+   "Feeling": "Normal||Positive",
+   "Line": "{{Number}}분 남았습니다"
+ },
+ {
+   "Situation1": "Timer",
+   "Situation2": "Count_Down",
+   "Feeling": "Normal||Positive",
+   "Line": "10...9...8...7..."
+ },
+ {
+   "Situation1": "Timer",
+   "Situation2": "Error",
+   "Feeling": "Normal||Positive",
+   "Line": "이미 타이머가 작동중입니다"
+ },
+ {
+   "Situation1": "Timer",
+   "Situation2": "Stop",
+   "Feeling": "Normal||Positive",
+   "Line": "타이머를 멈췄습니다."
+ },
+ {
+   "Situation1": "Timer",
+   "Situation2": "Spare_time",
+   "Feeling": "Normal||Positive",
+   "Line": "{{Number}}분 남았다!"
+ },
+ {
+   "Situation1": "Timer",
+   "Situation2": "Count_Down",
+   "Feeling": "Normal||Positive",
+   "Line": "10...9...8...7..."
+ },
+ {
+   "Situation1": "Timer",
+   "Situation2": "Error",
+   "Feeling": "Normal||Positive",
+   "Line": "이미 흘러가고 있잖아 바보야!"
+ },
+ {
+   "Situation1": "Timer",
+   "Situation2": "Stop",
+   "Feeling": "Normal||Positive",
+   "Line": "그래 멈췄어"
+ },
+ {
+   "Situation1": "EasterEgg",
+   "Situation2": "Say\"김준수\"",
+   "Feeling": "Normal||Positive",
+   "Line": "그게 뭔진 몰라도 기분 나쁘네요"
+ },
+ {
+   "Situation1": "EasterEgg",
+   "Situation2": "Say\"미사카 미코토\"",
+   "Feeling": "Normal||Positive",
+   "Line": "미사카요? 잘 모르겠는데요?"
+ },
+ {
+   "Situation1": "EasterEgg",
+   "Situation2": "Say\"여우는 뭐라고 울어?\"",
+   "Feeling": "Normal||Positive",
+   "Line": "흠...정말 하시길 바라는 건가요?"
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ },
+ {
+   "Situation1": "",
+   "Situation2": "",
+   "Feeling": "",
+   "Line": ""
+ }
+]
