@@ -13,81 +13,47 @@ namespace Devri.Interact
 {
     class VoicetoText
     {
-        private static readonly string SERVER_URL = "https://speech.googleapis.com";
-        public static string GET(String URL, String Content)
-        {
-            var request = (HttpWebRequest)WebRequest.Create(URL + Content);
-            try
-            {
-                var response = request.GetResponseAsync();
-                var responseString = new StreamReader(response.Result.GetResponseStream()).ReadToEnd();
-                return responseString;
-            }
-            catch (WebException we)
-            {
-                return "";
-            }
-        }
+        //private static readonly string SERVER_URL = "https://speech.googleapis.com";
+        //public static string GET(String URL, String Content)
+        //{
+        //    var request = (HttpWebRequest)WebRequest.Create(URL + Content);
+        //    try
+        //    {
+        //        var response = request.GetResponseAsync();
+        //        var responseString = new StreamReader(response.Result.GetResponseStream()).ReadToEnd();
+        //        return responseString;
+        //    }
+        //    catch (WebException we)
+        //    {
+        //        return "";
+        //    }
+        //}
 
-
+        //public static async Task<string> POST_JSONAsync(string URL, string Content)
+        //{
+        //    var request = (HttpWebRequest)WebRequest.Create(URL);
+        //    var postData = Content;
+        //    request.ContentType = "application/json";
+        //    //request.ContentLength = postData.Length;
+        //    request.Method = "POST";
+        //    var data = Encoding.ASCII.GetBytes(postData);
+        //    try
+        //    {
+        //        using (var stream = await request.GetRequestStreamAsync())
+        //        {
+        //            stream.Write(data, 0, data.Length);
+        //        }
+        //        var response = request.GetResponseAsync();
+        //        var responseString = new StreamReader(response.Result.GetResponseStream()).ReadToEnd();
+        //        return responseString;
+        //    }
+        //    catch (WebException we)
+        //    {
+        //        //Console.WriteLine(((HttpWebResponse)we.Response).StatusCode);
+        //        return "";
+        //    }
+        //}
     }
 
-    static async Task<object> StreamingRecognizeAsync(string filePath)
-    {
-        var speech = SpeechClient.Create();
-        var streamingCall = speech.StreamingRecognize();
-        // Write the initial request with the config.
-        await streamingCall.WriteAsync(
-            new StreamingRecognizeRequest()
-            {
-                StreamingConfig = new StreamingRecognitionConfig()
-                {
-                    Config = new RecognitionConfig()
-                    {
-                        Encoding =
-                        RecognitionConfig.Types.AudioEncoding.Linear16,
-                        SampleRateHertz = 16000,
-                        LanguageCode = "en",
-                    },
-                    InterimResults = true,
-                }
-            });
-        // Print responses as they arrive.
-        Task printResponses = Task.Run(async () =>
-        {
-            while (await streamingCall.ResponseStream.MoveNext(
-                default(CancellationToken)))
-            {
-                foreach (var result in streamingCall.ResponseStream
-                    .Current.Results)
-                {
-                    foreach (var alternative in result.Alternatives)
-                    {
-                        Console.WriteLine(alternative.Transcript);
-                    }
-                }
-            }
-        });
-        // Stream the file content to the API.  Write 2 32kb chunks per 
-        // second.
-        using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
-        {
-            var buffer = new byte[32 * 1024];
-            int bytesRead;
-            while ((bytesRead = await fileStream.ReadAsync(
-                buffer, 0, buffer.Length)) > 0)
-            {
-                await streamingCall.WriteAsync(
-                    new StreamingRecognizeRequest()
-                    {
-                        AudioContent = Google.Protobuf.ByteString
-                        .CopyFrom(buffer, 0, bytesRead),
-                    });
-                await Task.Delay(500);
-            };
-        }
-        await streamingCall.WriteCompleteAsync();
-        await printResponses;
-        return 0;
-    }
+
 }

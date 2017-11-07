@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 namespace Devri.Common
 {
     class Feeling
@@ -33,6 +34,7 @@ namespace Devri.Common
             XAxis = 0;
             YAxis = 0;
             Check_Status();
+            FileStream fs = File.Create("save.txt");
         }
         public int Check_Status()
         {
@@ -58,6 +60,24 @@ namespace Devri.Common
             
             return -1;
         }
+        public void SaveFeel()
+        {
+            FileStream fs = new FileStream("save.txt",FileMode.Append);
+            StreamWriter w = new StreamWriter(fs);
 
+            w.WriteLine(XAxis);
+            w.WriteLine(YAxis);
+
+        }
+        public void LoadFeel()
+        {
+            FileStream fs = new FileStream("save.txt", FileMode.Append);
+            StreamReader sr = new StreamReader(fs);
+
+
+            XAxis = Int32.Parse(sr.ReadLine());
+            YAxis = Int32.Parse(sr.ReadLine());
+        }
+        
     }
 }

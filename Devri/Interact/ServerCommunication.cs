@@ -56,20 +56,15 @@ namespace Devri.Interact
         }
         public static async Task<string> POSTAsync(string URL, string Content)
         {
-            var request = (HttpWebRequest)WebRequest.Create(URL);
-            var postData = Content;
-            request.ContentType = "application/x-www-form-urlencoded";
-            //request.ContentLength = postData.Length;
-            request.Method = "POST";
-            var data = Encoding.ASCII.GetBytes(postData);
+            Windows.Web.Http.HttpClient client = new Windows.Web.Http.HttpClient();
+            var body = String.Format("body string");
+            Windows.Web.Http.HttpStringContent theContent = new Windows.Web.Http.HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/x-www-form-urlencoded");
+            theContent.Headers["Content-Length"] = "length";
+            Windows.Web.Http.HttpResponseMessage aResponse = await client.PostAsync(new Uri(SERVER_URL), theContent);
             try
             {
-                using (var stream = await request.GetRequestStreamAsync())
-                {
-                    stream.Write(data, 0, data.Length);
-                }
-                var response = request.GetResponseAsync();
-                var responseString = new StreamReader(response.Result.GetResponseStream()).ReadToEnd();
+
+                var responseString = aResponse.Source.ToString(); //이게 정말 되는건가? ㄷㄷ //new StreamReader(aResponse.Source.).ReadToEnd();
                 return responseString;
             }
             catch (WebException we)
@@ -81,20 +76,15 @@ namespace Devri.Interact
 
         public static async Task<string> POST_JSONAsync(string URL, string Content)
         {
-            var request = (HttpWebRequest)WebRequest.Create(URL);
-            var postData = Content;
-            request.ContentType = "application/json";
-            //request.ContentLength = postData.Length;
-            request.Method = "POST";
-            var data = Encoding.ASCII.GetBytes(postData);
+            Windows.Web.Http.HttpClient client = new Windows.Web.Http.HttpClient();
+            var body = String.Format("body string");
+            Windows.Web.Http.HttpStringContent theContent = new Windows.Web.Http.HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/x-www-form-urlencoded");
+            theContent.Headers["Content-Length"] = "length";
+            Windows.Web.Http.HttpResponseMessage aResponse = await client.PostAsync(new Uri(SERVER_URL), theContent);
             try
             {
-                using (var stream = await request.GetRequestStreamAsync())
-                {
-                    stream.Write(data, 0, data.Length);
-                }
-                var response = request.GetResponseAsync();
-                var responseString = new StreamReader(response.Result.GetResponseStream()).ReadToEnd();
+
+                var responseString = aResponse.Source.ToString(); //이게 정말 되는건가? ㄷㄷ //new StreamReader(aResponse.Source.).ReadToEnd();
                 return responseString;
             }
             catch (WebException we)
@@ -102,6 +92,8 @@ namespace Devri.Interact
                 //Console.WriteLine(((HttpWebResponse)we.Response).StatusCode);
                 return "";
             }
+            
+             
         }
 
 
