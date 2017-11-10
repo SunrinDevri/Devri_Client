@@ -7,11 +7,19 @@ using Windows.Devices.Enumeration;
 using Windows.Devices.SerialCommunication;
 using Windows.Foundation;
 using Windows.Storage.Streams;
+using Windows.Devices.Geolocation;
 
 namespace Devri.GPS
 {
     class GroundPosit
     {
-
+        public async Task InitializeAsync()
+        {
+            var accessStatus = await Geolocator.RequestAccessAsync();
+            switch (accessStatus)
+            {
+               
+            }
+        }
     }
 }

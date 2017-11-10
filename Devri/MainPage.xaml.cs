@@ -85,5 +85,9 @@ namespace Devri
                 await Task.Delay(2000);
             }
         }
+        public void Stop_Image()
+        {
+            Image img = 
+        }
     }
 }

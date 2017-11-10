@@ -13,7 +13,7 @@ namespace Devri.Common
         public int XAxis;
         public int YAxis;
         public int Status = 0; // 0 = Normal 1=Positive 2=Angry 3=Sad 
-        public DateTime LastestTime;
+        public DateTime LastestTime,EndTime;
 
         public void SetXAxis(int distance)
         {
@@ -84,12 +84,55 @@ namespace Devri.Common
         }
         public void Usersleep_Start()
         {
-            ServerCommunication.GET("127.0.0.1/usersleep/start", "Device Code");
+            LastestTime = DateTime.Now;
         }
         public void Usersleep_End()
         {
             ServerCommunication.GET("127.0.0.1/usersleep/end", "Device Code");
+            EndTime = DateTime.Now;
+            TimeSpan BetweenTime = EndTime - LastestTime;
+            
         }
-        
+        public void RenewFeeling(TimeSpan Bt)
+        {
+            int hours=Bt.Hours;
+            if (XAxis > 0)
+            {
+                if (XAxis <= hours)
+                { XAxis = 0; }
+                else
+                {
+                    XAxis = XAxis - hours;
+                }
+            }
+            else
+            {
+                if (XAxis >= hours)
+                { XAxis = 0; }
+                else
+                {
+                    XAxis = XAxis + hours;
+                }
+            }
+
+            if (YAxis > 0)
+            {
+                if (YAxis <= hours)
+                { YAxis = 0; }
+                else
+                {
+                    YAxis = YAxis - hours;
+                }
+            }
+            else
+            {
+                if (YAxis >= hours)
+                { YAxis = 0; }
+                else
+                {
+                    YAxis = YAxis + hours;
+                }
+            }
+        }
     }
 }

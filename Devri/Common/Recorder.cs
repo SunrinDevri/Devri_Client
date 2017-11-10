@@ -17,9 +17,9 @@ namespace Devri.Common
             MediaCapture mediaCapture = new MediaCapture();
             bool isPreviewing;
             await mediaCapture.InitializeAsync();
+            MediaCaptureFailedEventHandler MediaCapture_Failed = null;
             mediaCapture.Failed += MediaCapture_Failed;
 
-            mediaCapture.RecordLimitationExceeded += MediaCapture_RecordLimitationExceeded;
         }
 
 
