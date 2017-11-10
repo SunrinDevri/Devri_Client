@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Devri.Common
 {
-    class Animation
+    class Alarm
     {
-
-
+        DateTime dt;
 
     }
 }

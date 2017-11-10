@@ -11,7 +11,7 @@ using System.IO;
 
 namespace Devri.Interact
 {
-    class VoicetoText
+    class SoundtoText
     {
         //private static readonly string SERVER_URL = "https://speech.googleapis.com";
         //public static string GET(String URL, String Content)

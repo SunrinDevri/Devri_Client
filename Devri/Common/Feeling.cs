@@ -4,13 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Devri.Interact;
+
 namespace Devri.Common
 {
     class Feeling
     {
-        public static int XAxis;
-        public static int YAxis;
+        public int XAxis;
+        public int YAxis;
         public int Status = 0; // 0 = Normal 1=Positive 2=Angry 3=Sad 
+        public DateTime LastestTime;
+
         public void SetXAxis(int distance)
         {
             XAxis = XAxis + distance;
@@ -77,6 +81,14 @@ namespace Devri.Common
 
             XAxis = Int32.Parse(sr.ReadLine());
             YAxis = Int32.Parse(sr.ReadLine());
+        }
+        public void Usersleep_Start()
+        {
+            ServerCommunication.GET("127.0.0.1/usersleep/start", "Device Code");
+        }
+        public void Usersleep_End()
+        {
+            ServerCommunication.GET("127.0.0.1/usersleep/end", "Device Code");
         }
         
     }

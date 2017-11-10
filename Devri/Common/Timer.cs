@@ -4,33 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.System.Threading;
+using System.IO;
+using Sysem.Net;
 
 namespace Devri.Common
 {
     class Timer
     {
-        TimeSpan delay = TimeSpan.FromMinutes(3);
+        public object DisPatcher { get; private set; }
 
-        ThreadPoolTimer DelayTimer = ThreadPoolTimer.CreateTimer(
-            (source) =>
-            {
-                //
-                // TODO: Work
-                //
-
-                //
-                // Update the UI thread by using the UI core dispatcher.
-                //
-                System.ServiceModel.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.High,
-                    () =>
-                    {
-                //
-                // UI components can be accessed within this scope.
-                //
-
-            });
-
-            }, delay);
+        public void Timer_Start(int j)
+        {
+            TimeSpan  delay = TimeSpan.FromMinutes(j);
+            ThreadPoolTimer  DelayTimer = ThreadPoolTimer.CreateTimer((source){DisPatcher},delay);
+        }
     }
 }

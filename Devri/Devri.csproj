@@ -98,14 +98,16 @@
     </Compile>
     <Compile Include="Common\Animation.cs" />
     <Compile Include="Common\BindablePage.cs" />
+    <Compile Include="Common\Alarm.cs" />
     <Compile Include="Common\Feeling.cs" />
+    <Compile Include="Common\Recorder.cs" />
     <Compile Include="Common\Timer.cs" />
     <Compile Include="Driver\DHTDriver.cs" />
     <Compile Include="Driver\SensorTypes.cs" />
     <Compile Include="GPS\GroundPosit.cs" />
     <Compile Include="Interact\ServerCommunication.cs" />
     <Compile Include="Interact\VoiceAct.cs" />
-    <Compile Include="Interact\VoicetoText.cs" />
+    <Compile Include="Interact\SoundtoText.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

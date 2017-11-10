@@ -13,7 +13,7 @@ namespace Devri.Interact
     class ServerCommunication
 
     {
-        private static readonly string SERVER_URL= "http://iwin247.kr";
+        private static readonly string SERVER_URL= "http://iwin247.kr:80";
         public static string GET(String URL, String Content)
         {
             var request = (HttpWebRequest)WebRequest.Create(URL + Content);
@@ -44,6 +44,7 @@ namespace Devri.Interact
                 var client = new HttpClient();
                 var multi = new MultipartFormDataContent();
                 multi.Add(scontent);
+
                 client.BaseAddress = new Uri("http://iwin247.kr");
                 var result = client.PostAsync("upload/", multi).Result;
                 return result.Content.ReadAsStringAsync().Result;
@@ -56,15 +57,16 @@ namespace Devri.Interact
         }
         public static async Task<string> POSTAsync(string URL, string Content)
         {
-            Windows.Web.Http.HttpClient client = new Windows.Web.Http.HttpClient();
+            try
+            {
+                Windows.Web.Http.HttpClient client = new Windows.Web.Http.HttpClient();
             var body = String.Format("body string");
             Windows.Web.Http.HttpStringContent theContent = new Windows.Web.Http.HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/x-www-form-urlencoded");
             theContent.Headers["Content-Length"] = "length";
             Windows.Web.Http.HttpResponseMessage aResponse = await client.PostAsync(new Uri(SERVER_URL), theContent);
-            try
-            {
+           
 
-                var responseString = aResponse.Source.ToString(); //이게 정말 되는건가? ㄷㄷ //new StreamReader(aResponse.Source.).ReadToEnd();
+                var responseString = aResponse.Source.ToString();//new StreamReader(aResponse.Source.).ReadToEnd();
                 return responseString;
             }
             catch (WebException we)
@@ -76,15 +78,18 @@ namespace Devri.Interact
 
         public static async Task<string> POST_JSONAsync(string URL, string Content)
         {
-            Windows.Web.Http.HttpClient client = new Windows.Web.Http.HttpClient();
-            var body = String.Format("body string");
-            Windows.Web.Http.HttpStringContent theContent = new Windows.Web.Http.HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/x-www-form-urlencoded");
-            theContent.Headers["Content-Length"] = "length";
-            Windows.Web.Http.HttpResponseMessage aResponse = await client.PostAsync(new Uri(SERVER_URL), theContent);
             try
             {
+                Windows.Web.Http.HttpClient client = new Windows.Web.Http.HttpClient();
+                var body = String.Format("body string");
+                body = Content;
 
-                var responseString = aResponse.Source.ToString(); //이게 정말 되는건가? ㄷㄷ //new StreamReader(aResponse.Source.).ReadToEnd();
+                Windows.Web.Http.HttpStringContent theContent = new Windows.Web.Http.HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json");
+                theContent.Headers["Content-Length"] = "length";
+                Windows.Web.Http.HttpResponseMessage aResponse = await client.PostAsync(new Uri(SERVER_URL), theContent);
+            
+
+                var responseString = aResponse.Source.ToString();
                 return responseString;
             }
             catch (WebException we)
