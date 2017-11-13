@@ -19,6 +19,7 @@ using Windows.Devices.Gpio;
 using Windows.Devices.Sensors.Temperature;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Threading;
 
 // 빈 페이지 항목 템플릿에 대한 설명은 https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x412에 나와 있습니다.
 
@@ -85,9 +86,35 @@ namespace Devri
                 await Task.Delay(2000);
             }
         }
+        public static System.Threading.Timer timer;
+        public object DisPatcher { get; private set; }
+
+        public void Timer_Start()
+        {
+            
+            timer = new System.Threading.Timer(timerCallback, null, 0,10);
+
+        }
+
+        private async void timerCallback(object state)
+        {
+            //Put Something you want to run async
+            await Window.Current.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
+            () => {
+                // do some work on UI here;
+            });
+        }
+
+
         public void Stop_Image()
         {
-            Image img = 
+            Image img = ;
         }
+
+            
+
+        
+
+       
     }
 }

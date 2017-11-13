@@ -199,6 +199,18 @@
   },
   {
     "Situation1": "Schedule_Alarm",
+    "Situation2": "Add",
+    "Feeling": "Normal||Positive",
+    "Line": "{{Task_Name}}일정이 등록되었습니다."
+  },
+  {
+    "Situation1": "Schedule_Alarm",
+    "Situation2": "Add",
+    "Feeling": "Angry||Sad",
+    "Line": "{{Task_Name}}일정을 어쩔수 없이 등록해야겠네."
+  },
+  {
+    "Situation1": "Schedule_Alarm",
     "Situation2": "-",
     "Feeling": "Normal",
     "Line": "{{Time}}분후 {{Task_Name}}일정이 있습니다."
@@ -351,7 +363,7 @@
     "Situation1": "Place_Recommand",
     "Situation2": "-",
     "Feeling": "Normal",
-    "Line":"제가 추천하는 여행지는 {{Place}} 입니다 "
+    "Line": "제가 추천하는 여행지는 {{Place}} 입니다 "
   },
   {
     "Situation1": "Place_Recommand",
@@ -1795,6 +1807,18 @@
   },
   {
     "Situation1": "D-day",
+    "Situation2": "Delete",
+    "Feeling": "All",
+    "Line": "{{D-day_Name}}을 삭제했습니다."
+  },
+  {
+    "Situation1": "D-day",
+    "Situation2": "Add",
+    "Feeling": "All",
+    "Line": "{{D-day_Name}}이 등록됬습니다."
+  },
+  {
+    "Situation1": "D-day",
     "Situation2": "-",
     "Feeling": "Normal||Positive",
     "Line": "{{D-day_Name}}이 {{D_day}}만큼 남았습니다."
@@ -1923,25 +1947,25 @@
     "Situation1": "Traffic_Info",
     "Situation2": "COOL",
     "Feeling": "Normal||Positive",
-    "Line": "{Road_Name}은 지금 뻥 뚫린거 같네요"
+    "Line": "{{Road_Name}}은 지금 뻥 뚫린거 같네요"
   },
   {
     "Situation1": "Traffic_Info",
     "Situation2": "HARD",
     "Feeling": "Normal||Positive",
-    "Line": "{Road_Name}의 현재 교통상황은 {{Sector[]}}에서 정체가 되고있습니다."
+    "Line": "{{Road_Name}}의 현재 교통상황은 {{Sector[]}}에서 정체가 되고있습니다."
   },
   {
     "Situation1": "Traffic_Info",
     "Situation2": "COOL",
     "Feeling": "Angry||Sad",
-    "Line": "{Road_Name}에 막힌 곳은 없어 빨리 안가고 뭐해?"
+    "Line": "{{Road_Name}}에 막힌 곳은 없어 빨리 안가고 뭐해?"
   },
   {
     "Situation1": "Traffic_Info",
     "Situation2": "HARD",
     "Feeling": "Angry||Sad",
-    "Line": "{Road_Name}의 현재 교통상황은 {{Sector[]}}에서 답답하게 안가는거 같네."
+    "Line": "{{Road_Name}}의 현재 교통상황은 {{Sector[]}}에서 답답하게 안가는거 같네."
   },
   {
     "Situation1": "Calculator",

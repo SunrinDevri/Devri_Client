@@ -10,9 +10,10 @@ namespace Devri.Common
 {
     class Feeling
     {
-        public int XAxis;
-        public int YAxis;
-        public int Status = 0; // 0 = Normal 1=Positive 2=Angry 3=Sad 
+        static private int XAxis=0;
+        static private int YAxis=0;
+        static private int Status = 0; // 0 = Normal 1=Positive 2=Angry 3=Sad 
+        public static List<String> feel_table = new List<string> { {"Normal"},{"Positive"},{"Angry"},{"Sad"} };
         public DateTime LastestTime,EndTime;
 
         public void SetXAxis(int distance)
@@ -23,15 +24,21 @@ namespace Devri.Common
         {
             YAxis = YAxis + distance;
         }
-
-        Feeling()
+        public int GetXAxis()
         {
+            return XAxis;
+        }
+        public int GetYAxis()
+        {
+            return YAxis;
         }
 
-        public int GetXAxis()
-        { return XAxis; }
-        public int GetYAxis()
-        { return YAxis; }
+
+        static public int GetStatus()
+        {
+            
+            return Status;
+        }
 
         public void InitializeFeel()
         {

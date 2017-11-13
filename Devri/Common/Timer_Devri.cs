@@ -10,7 +10,7 @@ using Windows.UI.Xaml;
 
 namespace Devri.Common
 {
-    class Timer
+    class Timer_Devri
     {
         private System.Threading.Timer timer;
         public object DisPatcher { get; private set; }

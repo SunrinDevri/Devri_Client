@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using Windows.UI.Xaml;
+using Devri.Common;
+using static Devri.Common.Feeling;
 namespace Devri.Interact
 {
     class VoiceAct
@@ -22,13 +24,14 @@ namespace Devri.Interact
             JArray Scripts = JArray.Parse(data);
             foreach (JObject itemObj in Scripts.Children<JObject>())
             {
-                if (itemObj["Situation1"].ToString() == reci["Situaion1"].ToString() && itemObj["Situation2"].ToString() == reci["Situaion2"].ToString())
+                if (itemObj["Situation1"].ToString() == reci["Situaion1"].ToString() &&(
+                    (itemObj["Feeling"].Contains(feel_table[GetStatus()]))||itemObj["Feeling"].Equals("All")))
                 {
                     ScriptList.Add(itemObj);
                 }
                 
             }
-            JObject ret = ScriptList[rd.Next(0, ScriptList.Count)];
+            //JObject ret = ScriptList[rd.Next(0, ScriptList.Count)];
 
 
 
@@ -38,81 +41,132 @@ namespace Devri.Interact
 
         }
 
-        public String EventPlayer(JObject KJS)
+        public String EventPlayer(JArray KJS,JObject reci)
         {
-            String temp = KJS["Situation1"].ToString();
+            Random rd = new Random();
+            JObject ret = (JObject)KJS[rd.Next(0, KJS.Count)];
+            String temp = ret["Situation1"].ToString();
+            string result = "";
             switch (temp)
             {
-                case "First Meet": break;
-                case "Call":break;
-                case "Alarm":break;
-                case "Schedule_Alarm": break;
-                case "Morning_greeting": break;
-                case "Lunch_greeting": break;
-                case "Dinner_greeting": break;
-                case "Today": break;
-                case "Weather": break;
-                case "Music_Recommand": break;
-                case "Temperature_Humidity_Management": break;
-                case "Movie_Recommand": break;
-                case "Book_Recommand": break;
-                case "Time_Signal": break;
-                case "TodayWord": break;
-                case "D-day": break;
-                case "MoodLamp": break;
-                case "Status_Check":break;
-                case "Disable": break;
-                case "Traffic_Info": break;
-                case "Calculator": break;
-                case "Timer": break;
-                case "EasterEgg": break;
+                
+                case "Schedule_Alarm":
+                    break;
+
+
+                
+                case "Today":
+                    result = ret["Line"].ToString();
+                    break;
+                    
+                case "Weather":
+
+                    break;
+
+                case "Music_Recommand":
+                    break;
+                case "Temperature_Humidity_Management":
+                    break;
+                case "Movie_Recommand":
+                    break;
+                case "Book_Recommand":
+                    break;
+                
+                case "TodayWord":
+                    break;
+                case "D-day":
+                    break;
+                case "MoodLamp":
+                    break;           
+                case "Status_Check":
+                    result = ret["Line"].ToString();
+                    
+                    break;
+                case "Disable":
+                    result = ret["Line"].ToString();
+                    //Disable Code
+                    break;
+
+                case "Traffic_Info":
+                    JArray get_traffic = JArray.Parse(ServerCommunication.GET("http://iwin247.kr:80/traffic", reci["keyword1"].ToString()));
+                    Event_Traffic_Info(ret, get_traffic,reci);
+                    break;
+                case "Calculator":
+                    break;
+                case "Timer":
+                    break;
+               
 
             }
-            //if (temp == "Schedule_Alarm")
-            //{
-
-            //}
-            //else if (temp == "Weather")
-            //{
-            //    ServerCommunication.GET("iwin247.kr:80/music", "");
-            //}
-            //else if (ret["Situation1"].ToString() == "Music")
-            //{
-            //    ServerCommunication.GET("iwin247.kr:80/movie", "");
-            //}
-            //else if (ret["Situation1"].ToString() == "Movie_Recommand")
-            //{
-            //    ServerCommunication.GET("iwin247.kr:80/movie", "");
-            //}
-            //else if (ret["Situation1"].ToString() == "TodayWord")
-            //{
-            //    ServerCommunication.GET("iwin247.kr:80/movie", "");
-            //}
-            //else if (ret["Situation1"].ToString() == "Book_Recommand")
-            //{
-            //    ServerCommunication.GET("iwin247.kr:80/movie", "");
-            //}
-            //else if (ret["Situation1"].ToString() == "Calculator")
-            //{
-            //    ServerCommunication.GET("iwin247.kr:80/movie", "");
-            //}
-            //else if (ret["Situation1"].ToString() == "Timer")
-            //{
-            //    ServerCommunication.POSTAsync("iwin247.kr:80/timer", "");
-            //}
-            //else if (ret["Situation1"].ToString() == "Timer")
-            //{
-            //    ServerCommunication.GET("iwin247.kr:80/timer", reci["Keyword1"].ToString());
-            //}
-            //return "잘 모르겠습니다";
+            
+            return result;
+        }
+        public string Event_Schedule_Alarm(JObject asd, JObject reci)
+        {
             return "";
         }
-        public String Input(String line,string datalink)
+        //public string Event_Today(String asd)
+        //{
+        //    DateTime dt = DateTime.Now;
+        //    string st = "";
+        //    st = st + dt.Month.ToString()+"/"+dt.Day.ToString();
+        //    return "";
+        //}
+        public string Event_Weather(JObject asd, JObject reci)
         {
-            
+            return "";
+        }
+        public string Event_Music_Recommand(JObject asd, JObject reci)
+        {
+            return "";
+        }
+        public string Event_Book_Recommand(JObject asd, JObject reci)
+        {
+            return "";
+        }
+        public string Event_TodayWord(JObject asd, JObject reci)
+        {
+            return "";
+        }
+        public string Event_MoodLamp(JObject asd, JObject reci)
+        {
+            return "";
+        }
+        public string Event_Disable(JObject asd, JObject reci)
+        {
+            return "";
+        }
+        public string Event_Traffic_Info(JObject asd,JArray get,JObject reci )
+        {
+            if (asd["Situation2"].ToString() == "HARD")
+            {
+                String Sectors = "";
+                foreach (JObject itemObj in get.Children<JObject>())
+                {
+                    if (itemObj["Status"].ToString() == "정체")
+                    {
+                        Sectors = Sectors + itemObj[Sectors].ToString() + " ";
+                    }
 
-            String result="";
-            return result;
-        } 
+                }
+                asd["Line"].ToString().Replace("{{Sector[]}}", Sectors);
+                return asd["Line"].ToString().Replace("{{Road_Name}}", reci["Keyword1"].ToString());
+            }
+            else
+            {
+
+                return asd["Line"].ToString().Replace("{{Road_Name}}", reci["Keyword1"].ToString());
+            }
+
+            
+        }
+        public string Event_Calculator(JObject asd, JObject reci)
+        {
+            return "";
+        }
+        public string Event_Timer(JObject asd, JObject reci)
+        {
+            return "";
+        }
     }
 }
