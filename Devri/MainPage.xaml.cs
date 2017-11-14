@@ -20,6 +20,7 @@ using Windows.Devices.Sensors.Temperature;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Threading;
+using Windows.Devices.Geolocation;
 
 // 빈 페이지 항목 템플릿에 대한 설명은 https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x412에 나와 있습니다.
 
@@ -70,6 +71,7 @@ namespace Devri
         public MainPage()
         {
             this.InitializeComponent();
+            SetupGeo(); 
             Read();
         }
 
@@ -105,16 +107,44 @@ namespace Devri
             });
         }
 
-
         public void Stop_Image()
         {
-            Image img = ;
+            
         }
 
-            
 
-        
 
-       
+        public static Geolocator Geolocator { get; set; }
+        public static bool RunningInBackground { get; set; }
+        private void SetupGeo()
+        {
+            if (Geolocator == null)
+            {
+                Geolocator = new Geolocator();
+                Geolocator.DesiredAccuracy = PositionAccuracy.High;
+                Geolocator.MovementThreshold = 100;
+                Geolocator.PositionChanged += Geolocator_PositionChanged;
+            }
+        }
+        private void Geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
+        {
+            geolocator_PositionChanged(sender, args);
+        }
+
+        private async void geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
+        {
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {   //Point point;
+                //point.Position.Latitude
+                String wido=args.Position.Coordinate.Latitude.ToString("0.00");
+                String gyungdo=args.Position.Coordinate.Longitude.ToString("0.00");
+            });
+
+        }
+
+
+
+
+
     }
 }

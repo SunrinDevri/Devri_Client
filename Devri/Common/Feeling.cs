@@ -16,6 +16,8 @@ namespace Devri.Common
         public static List<String> feel_table = new List<string> { {"Normal"},{"Positive"},{"Angry"},{"Sad"} };
         public DateTime LastestTime,EndTime;
 
+        
+
         public void SetXAxis(int distance)
         {
             XAxis = XAxis + distance;
@@ -78,6 +80,7 @@ namespace Devri.Common
 
             w.WriteLine(XAxis);
             w.WriteLine(YAxis);
+            ServerCommunication.POSTAsync("http://iwin247.kr:80/device/updatestatus", XAxis+","+YAxis+","+"DvCode");
 
         }
         public void LoadFeel()

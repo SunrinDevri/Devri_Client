@@ -9,6 +9,8 @@ using System.IO;
 using Windows.UI.Xaml;
 using Devri.Common;
 using static Devri.Common.Feeling;
+using System.Data;
+
 namespace Devri.Interact
 {
     class VoiceAct
@@ -55,28 +57,38 @@ namespace Devri.Interact
 
 
                 
+
+
+
+
                 case "Today":
                     result = ret["Line"].ToString();
                     break;
                     
                 case "Weather":
-
+                    JArray get_weather = JArray.Parse(ServerCommunication.GET("http://iwin247.kr:80/weather", "GPS+Now+DeviceID"));
                     break;
 
                 case "Music_Recommand":
+                    JObject get_music = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/music", "DeviceID"));
                     break;
                 case "Temperature_Humidity_Management":
                     break;
                 case "Movie_Recommand":
+                    JObject get_Movie  = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/movie", "GPS+DeviceID"));
                     break;
                 case "Book_Recommand":
+                    JObject get_Book = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/book", "DeviceID"));
                     break;
                 
                 case "TodayWord":
+                    JObject get_word = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/word", "DeviceID"));
                     break;
                 case "D-day":
+
                     break;
                 case "MoodLamp":
+                    //led
                     break;           
                 case "Status_Check":
                     result = ret["Line"].ToString();
@@ -92,8 +104,13 @@ namespace Devri.Interact
                     Event_Traffic_Info(ret, get_traffic,reci);
                     break;
                 case "Calculator":
+                    double Output =StringToFormula.Eval(reci["Keyword1"].ToString());
+                    result = ret["Line"].ToString().Replace("{{Result}}", Output.ToString());
+                    return result;
                     break;
                 case "Timer":
+
+                    
                     break;
                
 
@@ -130,10 +147,12 @@ namespace Devri.Interact
         }
         public string Event_MoodLamp(JObject asd, JObject reci)
         {
+            /*램프*/
             return "";
         }
         public string Event_Disable(JObject asd, JObject reci)
         {
+            /*오디오 비활성화*/
             return "";
         }
         public string Event_Traffic_Info(JObject asd,JArray get,JObject reci )
@@ -160,12 +179,14 @@ namespace Devri.Interact
 
             
         }
-        public string Event_Calculator(JObject asd, JObject reci)
-        {
-            return "";
-        }
         public string Event_Timer(JObject asd, JObject reci)
         {
+            Timer_Devri td = new Timer_Devri();
+            int j =Int32.Parse(reci["Keyword1"].ToString());
+            if (Timer_Devri.isTimerRun==false)
+            {
+                td.Timer_Start(j);
+            }
             return "";
         }
     }

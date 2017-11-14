@@ -22,7 +22,7 @@ namespace Devri.Common
 
         private async void timerCallback(object state)
         {
-            //Put Something you want to run async
+            
             await Window.Current.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
             () => {
                 // do some work on UI here;
