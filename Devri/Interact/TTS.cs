@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
+using Windows.Storage.Streams;
 
 namespace Devri.Interact
 {
@@ -48,15 +49,14 @@ namespace Devri.Interact
                 theContent.Headers["X-Naver-Client-Id"] = "VLwfoTWl4e8GQ5_9JU35";
                 theContent.Headers["X-Naver-Client-Secret"] = "fzoBsRF0_M";
                 Windows.Web.Http.HttpResponseMessage aResponse = await client.PostAsync(new Uri(url), theContent);
-
+                
 
                 var responseString = aResponse.Source.ToString();
-                using (Stream output = File.OpenWrite("c:/tts.mp3"))
-                using (Stream input =  aResponse.Content.ReadAsStringAsync().GetResults())
-                {
-                    input.CopyTo(output);
-                }
                 
+                FileOutputStream outputStream = new FileOutputStream();//File.OpenWrite("voice.mp3")
+
+                await aResponse.Content.WriteToStreamAsync(outputStream);
+
                 //new StreamReader(aResponse.Source.).ReadToEnd();
                 return responseString;
             }

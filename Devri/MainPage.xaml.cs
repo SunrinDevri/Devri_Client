@@ -21,6 +21,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Threading;
 using Windows.Devices.Geolocation;
+using Windows.UI.Xaml.Media.Imaging;
 
 // 빈 페이지 항목 템플릿에 대한 설명은 https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x412에 나와 있습니다.
 
@@ -107,10 +108,51 @@ namespace Devri
             });
         }
 
-        public void Stop_Image()
+        public void Change_Image(int i,bool ani)
         {
-            
+            Image img = new Image();
+            BitmapImage Devri_Common_ani = new BitmapImage(new Uri(@"Resources/devri_normal.gif"));
+            BitmapImage Devri_Positive_ani = new BitmapImage(new Uri(@"Resources/devri_smile.gif"));
+            BitmapImage Devri_Angry_ani = new BitmapImage(new Uri(@"Resources/devri_angry.gif"));
+            BitmapImage Devri_Sad_ani = new BitmapImage(new Uri(@"Resources/devri_Confused.gif"));
+            BitmapImage Devri_Common = new BitmapImage(new Uri(@"Resources/normal.png"));
+            BitmapImage Devri_Positive = new BitmapImage(new Uri(@"Resources/smile.png"));
+            BitmapImage Devri_Angry = new BitmapImage(new Uri(@"Resources/yan.png"));
+            BitmapImage Devri_Sad = new BitmapImage(new Uri(@"Resources/confused.png"));
+            switch (i)
+            {
+                // 0 = Normal 1=Positive 2=Angry 3=Sad 
+                case 0:
+                    if (ani == true)
+                        img.Source = Devri_Common_ani;
+                    else
+                        img.Source = Devri_Common;
+                    break;
+                case 1:
+                    if (ani == true)
+                        img.Source = Devri_Positive_ani;
+                    else
+                        img.Source = Devri_Positive;
+                    break;
+                case 2:
+                    if (ani == true)
+                        img.Source = Devri_Angry_ani;
+                    else
+                        img.Source = Devri_Angry;
+                    break;
+                case 3:
+                    if (ani == true)
+                        img.Source = Devri_Sad_ani;
+                    else
+                        img.Source = Devri_Sad;
+                    break;
+
+
+            }
+
         }
+
+
 
 
 

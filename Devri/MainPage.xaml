@@ -14,7 +14,7 @@
             <TextBlock Text="{x:Bind DisplayHumidity, Mode=OneWay}" FontSize="50"/>
             <TextBlock x:Name="Time" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
-        <Image HorizontalAlignment="Left" Height="1500.924" Margin="243.963,-243.773,0,-254.151" VerticalAlignment="Top" Width="1000.00" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Source="Resources/devri_normal.gif">
+        <Image x:Name="image" HorizontalAlignment="Left" Height="1500.924" Margin="243.963,-243.773,0,-254.151" VerticalAlignment="Top" Width="1000.00" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Source="Resources/devri_normal.gif">
             <Image.RenderTransform>
                 <CompositeTransform Rotation="90.00"/>
             </Image.RenderTransform>

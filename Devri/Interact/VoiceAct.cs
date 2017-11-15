@@ -81,8 +81,6 @@ namespace Devri.Interact
                     result.Replace("{{Artist}}", get_Music["artist"].ToString());
                     return result;
                     break;
-                case "Temperature_Humidity_Management":
-                    break;
                 case "Movie_Recommand":
                     JObject get_Movie  = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/movie", "DeviceID"));
                     result = KJS["Line"].ToString().Replace("{{Music}}",get_Movie["name"].ToString());
