@@ -51,7 +51,7 @@ namespace Devri.Interact
 
                 var responseString = aResponse.Source.ToString();
                 using (Stream output = File.OpenWrite("c:/tts.mp3"))
-                using (Stream input = aResponse.Content.ReadAsInputStreamAsync())
+                using (Stream input =  aResponse.Content.ReadAsStringAsync().GetResults())
                 {
                     input.CopyTo(output);
                 }

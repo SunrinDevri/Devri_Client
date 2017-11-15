@@ -132,10 +132,14 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Resources\confused.png" />
     <Content Include="Resources\devri_angry.gif" />
     <Content Include="Resources\devri_Confused.gif" />
     <Content Include="Resources\devri_normal.gif" />
     <Content Include="Resources\devri_smile.gif" />
+    <Content Include="Resources\normal.png" />
+    <Content Include="Resources\smile.png" />
+    <Content Include="Resources\yan.png" />
     <Content Include="save.txt" />
   </ItemGroup>
   <ItemGroup>

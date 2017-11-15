@@ -20,7 +20,7 @@ namespace Devri.Interact
             List<JObject> ScriptList = new List<JObject>();
             Random rd = new Random();
             String locate = Directory.GetCurrentDirectory();
-            locate = Path.GetDirectoryName(Path.GetDirectoryName(locate)) + @"/Scripts.json";
+            locate = Path.GetDirectoryName(Path.GetDirectoryName(locate)) + @"Resources/Scripts.json";
             StreamReader file = File.OpenText(locate);
             var data = file.ReadToEnd();
             JArray Scripts = JArray.Parse(data);
@@ -67,24 +67,43 @@ namespace Devri.Interact
                     
                 case "Weather":
                     JArray get_weather = JArray.Parse(ServerCommunication.GET("http://iwin247.kr:80/weather", "GPS+Now+DeviceID"));
+                    foreach (JObject itemObj in get_weather.Children())
+                    {
+                        result = KJS["Line"].ToString().Replace("{{Music}}", itemObj["name"].ToString());
+                        result.Replace("{{Artist}}", itemObj["artist"].ToString());
+
+                    }
                     break;
 
                 case "Music_Recommand":
-                    JObject get_music = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/music", "DeviceID"));
+                    JObject get_Music = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/music", "DeviceID"));
+                    result = KJS["Line"].ToString().Replace("{{Music}}", get_Music["name"].ToString());
+                    result.Replace("{{Artist}}", get_Music["artist"].ToString());
+                    return result;
                     break;
                 case "Temperature_Humidity_Management":
                     break;
                 case "Movie_Recommand":
-                    JObject get_Movie  = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/movie", "GPS+DeviceID"));
-                    break;
+                    JObject get_Movie  = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/movie", "DeviceID"));
+                    result = KJS["Line"].ToString().Replace("{{Music}}",get_Movie["name"].ToString());
+                    result.Replace("{{Artist}}", get_Movie["artist"].ToString());
+                    return result;
+                    
                 case "Book_Recommand":
                     JObject get_Book = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/book", "DeviceID"));
-                    break;
+                    result = KJS["Line"].ToString().Replace("{{Book_Title}}", get_Book["name"].ToString());
+                    result.Replace("{{Author}}", get_Book["artist"].ToString());
+                    return result;
+                    
                 
                 case "TodayWord":
-                    JObject get_word = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/word", "DeviceID"));
+                    JObject get_Word = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/word", "DeviceID"));
+                    result = KJS["Line"].ToString().Replace("{{Word}}", get_Word["name"].ToString());
+                    result.Replace("{{Author}}", get_Word["artist"].ToString());
                     break;
                 case "D-day":
+                    
+
 
                     break;
                 case "MoodLamp":
@@ -107,7 +126,6 @@ namespace Devri.Interact
                     double Output =StringToFormula.Eval(reci["Keyword1"].ToString());
                     result = ret["Line"].ToString().Replace("{{Result}}", Output.ToString());
                     return result;
-                    break;
                 case "Timer":
 
                     
