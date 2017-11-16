@@ -11,25 +11,25 @@ namespace Devri.Common
 {
     class Recorder
     {
-        public event MediaCaptureFailedEventHandler Failed;
-        static public async Task RecordStartAsync()
-        {
-            MediaCapture mediaCapture = new MediaCapture();
-            bool isPreviewing;
-            await mediaCapture.InitializeAsync();
-            MediaCaptureFailedEventHandler MediaCapture_Failed = null;
-            mediaCapture.Failed += MediaCapture_Failed;
+        //public event MediaCaptureFailedEventHandler Failed;
+        //static public async Task RecordStartAsync()
+        //{
+        //    MediaCapture mediaCapture = new MediaCapture();
+        //    bool isPreviewing;
+        //    await mediaCapture.InitializeAsync();
+        //    MediaCaptureFailedEventHandler MediaCapture_Failed = null;
+        //    mediaCapture.Failed += MediaCapture_Failed;
 
-        }
-
-
+        //}
 
 
-        public JObject SendSound()
-        {
-            String bep =ServerCommunication.POST_FILE("", "record.mp3");
-            JObject sep = JObject.Parse(bep);
-            return sep;
-        }
+
+
+        //public JObject SendSound()
+        //{
+        //    String bep =ServerCommunication.POST_FILE("", "record.mp3");
+        //    JObject sep = JObject.Parse(bep);
+        //    return sep;
+        //}
     }
 }

@@ -6,6 +6,8 @@
     xmlns:common="using:Devri.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="800"
+    Height="480"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -14,11 +16,15 @@
             <TextBlock Text="{x:Bind DisplayHumidity, Mode=OneWay}" FontSize="50"/>
             <TextBlock x:Name="Time" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="1500.924" Margin="243.963,-243.773,0,-254.151" VerticalAlignment="Top" Width="1000.00" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Source="Resources/devri_normal.gif">
+        <Image x:Name="image" HorizontalAlignment="Left" Height="863.975" Margin="278.141,-144.347,0,-239.628" VerticalAlignment="Top" Width="512.191" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Source="Resources/devri_normal.gif">
             <Image.RenderTransform>
                 <CompositeTransform Rotation="90.00"/>
             </Image.RenderTransform>
         </Image>
+        <MediaElement
+            x:Name="MP3player"
+            Visibility="Collapsed"
+            />
 
     </Grid>
 </common:BindablePage>

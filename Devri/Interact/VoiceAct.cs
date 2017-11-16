@@ -43,7 +43,7 @@ namespace Devri.Interact
 
         }
 
-        public String EventPlayer(JArray KJS,JObject reci)
+        public void EventPlayer(JArray KJS,JObject reci)
         {
             Random rd = new Random();
             JObject ret = (JObject)KJS[rd.Next(0, KJS.Count)];
@@ -63,41 +63,46 @@ namespace Devri.Interact
 
                 case "Today":
                     result = ret["Line"].ToString();
+                    TTS.TTSPOSTAsync(result);
                     break;
                     
                 case "Weather":
-                    JArray get_weather = JArray.Parse(ServerCommunication.GET("http://iwin247.kr:80/weather", "GPS+Now+DeviceID"));
+                    JArray get_weather = JArray.Parse(ServerCommunication.GET("http://iwin247.kr:3080/weather", "GPS+Now+DeviceID"));
                     foreach (JObject itemObj in get_weather.Children())
                     {
-                        result = KJS["Line"].ToString().Replace("{{Music}}", itemObj["name"].ToString());
-                        result.Replace("{{Artist}}", itemObj["artist"].ToString());
+                        result = KJS["Line"].ToString().Replace("{{Weather_Now}}", itemObj["condition"].ToString());
+                        result.Replace("{{Weather}}", itemObj[""].ToString());
 
                     }
+                    Feeling.SetXAxis(2);
+                    TTS.TTSPOSTAsync(result);
                     break;
 
                 case "Music_Recommand":
-                    JObject get_Music = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/music", "DeviceID"));
+                    JObject get_Music = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:3080/music", "DeviceID"));
                     result = KJS["Line"].ToString().Replace("{{Music}}", get_Music["name"].ToString());
                     result.Replace("{{Artist}}", get_Music["artist"].ToString());
-                    return result;
+                    TTS.TTSPOSTAsync(result);
                     break;
                 case "Movie_Recommand":
-                    JObject get_Movie  = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/movie", "DeviceID"));
+                    JObject get_Movie  = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:3080/movie", "DeviceID"));
                     result = KJS["Line"].ToString().Replace("{{Music}}",get_Movie["name"].ToString());
                     result.Replace("{{Artist}}", get_Movie["artist"].ToString());
-                    return result;
-                    
+                    TTS.TTSPOSTAsync(result);
+                    break;
+
                 case "Book_Recommand":
-                    JObject get_Book = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/book", "DeviceID"));
+                    JObject get_Book = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:3080/book", "DeviceID"));
                     result = KJS["Line"].ToString().Replace("{{Book_Title}}", get_Book["name"].ToString());
                     result.Replace("{{Author}}", get_Book["artist"].ToString());
-                    return result;
-                    
-                
+                    TTS.TTSPOSTAsync(result);
+                    break;
+
+
                 case "TodayWord":
-                    JObject get_Word = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:80/word", "DeviceID"));
+                    JObject get_Word = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:3080/word", "DeviceID"));
                     result = KJS["Line"].ToString().Replace("{{Word}}", get_Word["name"].ToString());
-                    result.Replace("{{Author}}", get_Word["artist"].ToString());
+                    result.Replace("{{Author}}", get_Word["artist"].ToString()); TTS.TTSPOSTAsync(result);
                     break;
                 case "D-day":
                     
@@ -106,33 +111,40 @@ namespace Devri.Interact
                     break;
                 case "MoodLamp":
                     //led
+                    result = ret["Line"].ToString();
+                    TTS.TTSPOSTAsync(result);
+
                     break;           
                 case "Status_Check":
                     result = ret["Line"].ToString();
-                    
+                    TTS.TTSPOSTAsync(result);
+                    //finished
                     break;
                 case "Disable":
                     result = ret["Line"].ToString();
+                    TTS.TTSPOSTAsync(result);
                     //Disable Code
                     break;
 
                 case "Traffic_Info":
-                    JArray get_traffic = JArray.Parse(ServerCommunication.GET("http://iwin247.kr:80/traffic", reci["keyword1"].ToString()));
-                    Event_Traffic_Info(ret, get_traffic,reci);
+                    JArray get_traffic = JArray.Parse(ServerCommunication.GET("http://iwin247.kr:3080/traffic", reci["keyword1"].ToString()));
+                    TTS.TTSPOSTAsync( Event_Traffic_Info(ret, get_traffic,reci)); 
+                    //finished
                     break;
                 case "Calculator":
                     double Output =StringToFormula.Eval(reci["Keyword1"].ToString());
                     result = ret["Line"].ToString().Replace("{{Result}}", Output.ToString());
-                    return result;
+                    TTS.TTSPOSTAsync(result); 
+                    //finisihed
+                    break;
                 case "Timer":
-
-                    
+                    TTS.TTSPOSTAsync(result);
                     break;
                
 
             }
             
-            return result;
+            
         }
         public string Event_Schedule_Alarm(JObject asd, JObject reci)
         {
@@ -146,18 +158,6 @@ namespace Devri.Interact
         //    return "";
         //}
         public string Event_Weather(JObject asd, JObject reci)
-        {
-            return "";
-        }
-        public string Event_Music_Recommand(JObject asd, JObject reci)
-        {
-            return "";
-        }
-        public string Event_Book_Recommand(JObject asd, JObject reci)
-        {
-            return "";
-        }
-        public string Event_TodayWord(JObject asd, JObject reci)
         {
             return "";
         }
@@ -201,7 +201,7 @@ namespace Devri.Interact
             int j =Int32.Parse(reci["Keyword1"].ToString());
             if (Timer_Devri.isTimerRun==false)
             {
-                td.Timer_Start(j);
+               //need new timer plz
             }
             return "";
         }

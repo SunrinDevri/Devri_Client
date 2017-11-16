@@ -1605,7 +1605,7 @@
     "Situation1": "Weather",
     "Situation2": "Today",
     "Feeling": "Normal||Positive",
-    "Line": "지금은 {{Weather}}이고 {{Weather}}할 예정이네요."
+    "Line": "지금은 {{Weather_Now}}이고 {{Weather}}할 예정이네요."
   },
   {
     "Situation1": "Weather",

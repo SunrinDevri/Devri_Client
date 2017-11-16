@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net;
 using Windows.Storage.Streams;
+using System.Net.Http;
+using Windows.Storage;
 
 namespace Devri.Interact
 {
@@ -36,7 +38,7 @@ namespace Devri.Interact
         //    }
         //    Console.WriteLine("c:/tts.mp3 was created");
         //}
-        public static async Task<string> TTSPOSTAsync(string Content)
+        public static async void TTSPOSTAsync(string Content)
         {
             try
             {
@@ -45,26 +47,63 @@ namespace Devri.Interact
                 var body = String.Format("body string");
                 
                 Windows.Web.Http.HttpStringContent theContent = new Windows.Web.Http.HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/x-www-form-urlencoded");
-                theContent.Headers["Content-Length"] = "length";
+                theContent.Headers["Content-Length"] = body.Length.ToString();
                 theContent.Headers["X-Naver-Client-Id"] = "VLwfoTWl4e8GQ5_9JU35";
                 theContent.Headers["X-Naver-Client-Secret"] = "fzoBsRF0_M";
                 Windows.Web.Http.HttpResponseMessage aResponse = await client.PostAsync(new Uri(url), theContent);
-                
 
-                var responseString = aResponse.Source.ToString();
-                
-                FileOutputStream outputStream = new FileOutputStream();//File.OpenWrite("voice.mp3")
 
-                await aResponse.Content.WriteToStreamAsync(outputStream);
 
-                //new StreamReader(aResponse.Source.).ReadToEnd();
-                return responseString;
+
+                //Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                //Windows.Storage.StorageFile sampleFile = await storageFolder.CreateFileAsync("voice.mp3", Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                //sampleFile = await storageFolder.GetFileAsync("voice.mp3");
+                //var buffer = Windows.Security.Cryptography.CryptographicBuffer.ConvertStringToBinary(, Windows.Security.Cryptography.BinaryStringEncoding.Utf8);
+                if (aResponse.StatusCode == Windows.Web.Http.HttpStatusCode.Ok && aResponse != null)
+                {
+                    using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
+                    {
+                        await aResponse.Content.WriteToStreamAsync(stream);
+                        FileStream fs = new FileStream("voice.mp3", FileMode.Append);
+                        StorageFile file1 = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFileAsync("voice.mp3", CreationCollisionOption.ReplaceExisting);
+                        //                      내가 수정해야 할 부분
+                        using (var fileStream1 = await file1.OpenAsync(FileAccessMode.ReadWrite))
+                        {
+                            await RandomAccessStream.CopyAndCloseAsync(stream.GetInputStreamAt(0), fileStream1.GetOutputStreamAt(0));
+                        }
+                    }
+                }
+
             }
             catch (WebException we)
             {
                 //Console.WriteLine(((HttpWebResponse)we.Response).StatusCode);
-                return "";
             }
         }
+
+
+
+
+
+        //public static async Task DownloadAsync(Uri requestUri, string filename)
+        //{
+        //    if (filename == null)
+        //        throw new ArgumentNullException("voice.mp3");
+
+        //    using (var httpClient = new HttpClient())
+        //    {
+        //        using (var request = new HttpRequestMessage(HttpMethod.Post, requestUri))
+        //        {
+        //            using (
+        //                Stream contentStream = await (await httpClient.PostAsync(request)).Content.ReadAsStreamAsync(),
+        //                stream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None,4096,true))
+        //            {
+        //                await contentStream.CopyToAsync(stream);
+        //            }
+        //        }
+        //    }
+        //}
+
+        
     }
 }

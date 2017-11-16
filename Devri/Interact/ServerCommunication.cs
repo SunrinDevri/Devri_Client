@@ -13,7 +13,7 @@ namespace Devri.Interact
     class ServerCommunication
 
     {
-        private static readonly string SERVER_URL= "http://iwin247.kr:80";
+        public static readonly string SERVER_URL= "http://iwin247.kr:3080";
         public static string GET(String URL, String Content)
         {
             var request = (HttpWebRequest)WebRequest.Create(URL + Content);
@@ -60,13 +60,12 @@ namespace Devri.Interact
             try
             {
                 Windows.Web.Http.HttpClient client = new Windows.Web.Http.HttpClient();
-            var body = String.Format("body string");
-            Windows.Web.Http.HttpStringContent theContent = new Windows.Web.Http.HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/x-www-form-urlencoded");
-            theContent.Headers["Content-Length"] = "length";
-            Windows.Web.Http.HttpResponseMessage aResponse = await client.PostAsync(new Uri(SERVER_URL), theContent);
-           
+                var body = Content;
+                Windows.Web.Http.HttpStringContent theContent = new Windows.Web.Http.HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/x-www-form-urlencoded");
+                theContent.Headers["Content-Length"] = body.Length.ToString();
+                Windows.Web.Http.HttpResponseMessage aResponse = await client.PostAsync(new Uri(URL), theContent);
 
-                var responseString = aResponse.Source.ToString();//new StreamReader(aResponse.Source.).ReadToEnd();
+                var responseString = aResponse.Content.ToString();//new StreamReader(aResponse.Source.).ReadToEnd();
                 return responseString;
             }
             catch (WebException we)
@@ -85,8 +84,8 @@ namespace Devri.Interact
                 body = Content;
 
                 Windows.Web.Http.HttpStringContent theContent = new Windows.Web.Http.HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json");
-                theContent.Headers["Content-Length"] = "length";
-                Windows.Web.Http.HttpResponseMessage aResponse = await client.PostAsync(new Uri(SERVER_URL), theContent);
+                theContent.Headers["Content-Length"] = body.Length.ToString();
+                Windows.Web.Http.HttpResponseMessage aResponse = await client.PostAsync(new Uri(URL), theContent);
             
 
                 var responseString = aResponse.Source.ToString();

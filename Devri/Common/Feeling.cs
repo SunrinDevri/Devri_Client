@@ -4,27 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Devri.Interact;
+using Windows.Storage;
 
 namespace Devri.Common
 {
     class Feeling
     {
-        static private int XAxis=0;
-        static private int YAxis=0;
-        static private int Status = 0; // 0 = Normal 1=Positive 2=Angry 3=Sad 
+        //Device Information SAVE/LOAD ETC
+        static public readonly string PIN = "10032";
+        static public readonly string CODE = "RLAWN";
+
+        static public int XAxis=0;
+        static public int YAxis=0;
+        static public int Status = 0; // 0 = Normal 1=Positive 2=Angry 3=Sad 
         public static List<String> feel_table = new List<string> { {"Normal"},{"Positive"},{"Angry"},{"Sad"} };
         public DateTime LastestTime,EndTime;
 
         
 
-        public void SetXAxis(int distance)
+        public static void SetXAxis(int distance)
         {
             XAxis = XAxis + distance;
+             SaveFeelAsync();
         }
-        public void SetYAxis(int distance)
+        public static  void  SetYAxis(int distance)
         {
             YAxis = YAxis + distance;
+            SaveFeelAsync();
         }
         public int GetXAxis()
         {
@@ -42,50 +51,51 @@ namespace Devri.Common
             return Status;
         }
 
-        public void InitializeFeel()
+        public static void InitializeFeel()
         {
-            XAxis = 0;
-            YAxis = 0;
+            LoadFeel();
             Check_Status();
             FileStream fs = File.Create("save.txt");
         }
-        public int Check_Status()
+        public static void Check_Status()
         {
             if ((Math.Abs(XAxis) <= 20 && Math.Abs(YAxis) <= 20) || ((XAxis >= 0) && (YAxis < 0)))
             {
-                return 0;
+                Status = 0;
             }
             else if (XAxis >= 0)
             {
                 if (YAxis >= 0)
-                    return 1;
+                    Status = 1;
                 else
-                    return 0;
+                    Status = 0;
             }
             else if (XAxis < 0)
             {
                 if (YAxis >= 0)
-                    return 2;
+                    Status = 2;
                 else
-                    return 3;
+                    Status = 3;
             }
-            
-            
-            return -1;
+
+
+
         }
-        public void SaveFeel()
+        public async static void SaveFeelAsync()
         {
             FileStream fs = new FileStream("save.txt",FileMode.Append);
             StreamWriter w = new StreamWriter(fs);
 
             w.WriteLine(XAxis);
             w.WriteLine(YAxis);
-            ServerCommunication.POSTAsync("http://iwin247.kr:80/device/updatestatus", XAxis+","+YAxis+","+"DvCode");
+            await ServerCommunication.POSTAsync("http://iwin247.kr:80/device/updatestatus", "pin=" + Feeling.PIN+ "?Axis_X"+Feeling.XAxis+"?Axis_Y" + Feeling.YAxis);
 
         }
-        public void LoadFeel()
+        public static void LoadFeel()
         {
-            FileStream fs = new FileStream("save.txt", FileMode.Append);
+            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            Windows.Storage.StorageFolder installedLocation = Windows.ApplicationModel.Package.Current.InstalledLocation;
+            FileStream fs = new FileStream(@"\\c$\User Folders \ LocalAppData \ c3d9ddda-8277-426a-9dec-f262be0768ad_1.0.0.0_arm__am7z1jhasv14j \ AppData \" + "save.txt", FileMode.Append);
             StreamReader sr = new StreamReader(fs);
 
 
@@ -98,51 +108,16 @@ namespace Devri.Common
         }
         public void Usersleep_End()
         {
-            ServerCommunication.GET("127.0.0.1/usersleep/end", "Device Code");
+            ServerCommunication.GET("http://iwin247.kr:80/usersleep/end", "Device Code");
             EndTime = DateTime.Now;
-            TimeSpan BetweenTime = EndTime - LastestTime;
             
         }
-        public void RenewFeeling(TimeSpan Bt)
+        public void Update_image(int stat)
         {
-            int hours=Bt.Hours;
-            if (XAxis > 0)
-            {
-                if (XAxis <= hours)
-                { XAxis = 0; }
-                else
-                {
-                    XAxis = XAxis - hours;
-                }
-            }
-            else
-            {
-                if (XAxis >= hours)
-                { XAxis = 0; }
-                else
-                {
-                    XAxis = XAxis + hours;
-                }
-            }
-
-            if (YAxis > 0)
-            {
-                if (YAxis <= hours)
-                { YAxis = 0; }
-                else
-                {
-                    YAxis = YAxis - hours;
-                }
-            }
-            else
-            {
-                if (YAxis >= hours)
-                { YAxis = 0; }
-                else
-                {
-                    YAxis = YAxis + hours;
-                }
-            }
+            MainPage.Change_Image(stat,false);
         }
+        public static JObject Dday;
+        public void Add_DDay() {  }
+        public void Delete_DDay() { }
     }
 }

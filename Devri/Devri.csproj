@@ -96,7 +96,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\Animation.cs" />
     <Compile Include="Common\BindablePage.cs" />
     <Compile Include="Common\Alarm.cs" />
     <Compile Include="Common\Feeling.cs" />

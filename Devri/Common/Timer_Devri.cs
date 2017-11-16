@@ -22,11 +22,9 @@ namespace Devri.Common
 
 
 
-        public void Timer_Start(int j)
+        public void Timer_Start()
         {
-            isTimerRun = true;
-            TimeSpan  delay = TimeSpan.FromMinutes(j);
-            //j must be a millisecond integer
+            
             timer = new System.Threading.Timer(timerCallback, null,0,60000);
             
         }
@@ -35,9 +33,32 @@ namespace Devri.Common
         {
 
             DateTime dt = DateTime.Now;
+            JArray sce =Load_Schedule();
+
+            foreach (JObject itemObj in sce.Children<JObject>())
+            {
+                if (itemObj["Schedule_Time"].ToString() == dt.ToString().Substring(0,18))
+                {
+
+                }
+                
+
+            }
+
+            if (dt.Minute == 0)
+            {
+                if (Feeling.XAxis> 0) { Feeling.SetXAxis(-1); }
+                else { Feeling.SetXAxis(1); }
+                if (Feeling.XAxis <0) { Feeling.SetYAxis(-1); }
+                else { Feeling.SetYAxis(1); }
+            }
+
 
             //30min
-            dt.ToString();
+
+
+            //now
+
             //Put Something you want to run async
             await Window.Current.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
             () => {
@@ -51,7 +72,8 @@ namespace Devri.Common
             JObject new_schedule = new JObject();
             DateTime dt = DateTime.Now;
             new_schedule.Add("Schedule_Name", Task["Keyword1"].ToString());
-            new_schedule.Add("Schedule_Time", dt.AddMinutes(Double.Parse( Task["Keyword2"].ToString()) ));
+            dt.AddMinutes(Double.Parse(Task["Keyword2"].ToString()));
+            new_schedule.Add("Schedule_Time", dt.ToString().Substring(0,18) );
             Schedule_List.Add(new_schedule);
             Save_Schedule(Schedule_List.ToString());
         }
@@ -61,6 +83,8 @@ namespace Devri.Common
         {
             FileStream fs = new FileStream("Schedule.json", FileMode.Append);
             StreamWriter w = new StreamWriter(fs);
+            w.WriteLine(savedata);
+            w.Dispose();
 
 
         }
@@ -77,5 +101,10 @@ namespace Devri.Common
             return Scedule;
 
         }
+        public static string D_DAY_Calculate(JObject reci)
+        {
+            return "";
+        }
+        
     }
 }

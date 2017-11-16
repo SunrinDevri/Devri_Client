@@ -22,6 +22,10 @@ using System.Threading.Tasks;
 using System.Threading;
 using Windows.Devices.Geolocation;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.Media;
+using Devri.Interact;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 // 빈 페이지 항목 템플릿에 대한 설명은 https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x412에 나와 있습니다.
 
@@ -72,14 +76,37 @@ namespace Devri
         public MainPage()
         {
             this.InitializeComponent();
-            SetupGeo(); 
+            SetupGeo();
             Read();
+            Send();
+            Init_First_Setting();
+            Speech_Interaction();
+            
+            
+        }
+
+        private void Init_First_Setting()
+        {
+            Feeling.InitializeFeel();
+        }
+
+        private void Speech_Interaction()
+        {
+
+            VoiceAct va = new VoiceAct();
+            //va.LineSelector(JArray)
+            //TTS.TTSPOSTAsync();
         }
 
         public async void Read()
         {
             var gpio = GpioController.GetDefault();
-            var dataPin = gpio.OpenPin(5);
+            var dataPin = gpio.OpenPin(4);
+            //well
+            //pin Opens well, but fail to read. because C# can't read signal/write signal in microseconds. (40 microsecond or less needed)
+            // => how about compute fix value in code?
+            // => we will exhibit this in PC-8 or PC-10, there's temperature will be 25 degrees i think.
+            // => Just return 25C and 40% humidty. (of course randomly do something)
             var sensor = new DHT11(dataPin, SensorTypes.DHT11);
             for (int i = 1; i < 100; i++)
             {
@@ -89,17 +116,24 @@ namespace Devri
                 await Task.Delay(2000);
             }
         }
+
+
+        public async void Send()
+        {
+           string result = await ServerCommunication.POSTAsync(ServerCommunication.SERVER_URL+ "/auth/signup", "pin="+ Feeling.PIN +"&code="+ Feeling.CODE);
+           //TTS.TTSPOSTAsync("김준수");
+        }
         public static System.Threading.Timer timer;
         public object DisPatcher { get; private set; }
 
         public void Timer_Start()
         {
             
-            timer = new System.Threading.Timer(timerCallback, null, 0,10);
+            timer = new Timer(TimerCallback, null, 0,10);
 
         }
 
-        private async void timerCallback(object state)
+        private async void TimerCallback(object state)
         {
             //Put Something you want to run async
             await Window.Current.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
@@ -108,7 +142,7 @@ namespace Devri
             });
         }
 
-        public void Change_Image(int i,bool ani)
+        public static void Change_Image(int i,bool ani)
         {
             Image img = new Image();
             BitmapImage Devri_Common_ani = new BitmapImage(new Uri(@"Resources/devri_normal.gif"));
@@ -162,9 +196,11 @@ namespace Devri
         {
             if (Geolocator == null)
             {
-                Geolocator = new Geolocator();
-                Geolocator.DesiredAccuracy = PositionAccuracy.High;
-                Geolocator.MovementThreshold = 100;
+                Geolocator = new Geolocator
+                {
+                    DesiredAccuracy = PositionAccuracy.High,
+                    MovementThreshold = 100
+                };
                 Geolocator.PositionChanged += Geolocator_PositionChanged;
             }
         }
@@ -182,6 +218,10 @@ namespace Devri
                 String gyungdo=args.Position.Coordinate.Longitude.ToString("0.00");
             });
 
+        }
+        public static async Task PlayVoice()
+        {
+            MediaElement media = new MediaElement();
         }
 
 
