@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Devri.Interact;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,8 @@ namespace Devri.Common
 
         private async void timerCallback(object state)
         {
-            
+            TTS.TTSPOSTAsync("");
+            timer.Dispose();
             await Window.Current.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
             () => {
                 // do some work on UI here;

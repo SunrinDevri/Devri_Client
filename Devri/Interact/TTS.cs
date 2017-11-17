@@ -38,14 +38,14 @@ namespace Devri.Interact
         //    }
         //    Console.WriteLine("c:/tts.mp3 was created");
         //}
-        public static async void TTSPOSTAsync(string Content)
+        public static async void TTSPOSTAsync( string Content)
         {
             try
             {
+                string RealContent = "speaker=mijin&speed=0&text="+Content;
                 string url = "https://openapi.naver.com/v1/voice/tts.bin";
                 Windows.Web.Http.HttpClient client = new Windows.Web.Http.HttpClient();
-                var body = String.Format("body string");
-                
+                var body = RealContent;
                 Windows.Web.Http.HttpStringContent theContent = new Windows.Web.Http.HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/x-www-form-urlencoded");
                 theContent.Headers["Content-Length"] = body.Length.ToString();
                 theContent.Headers["X-Naver-Client-Id"] = "VLwfoTWl4e8GQ5_9JU35";

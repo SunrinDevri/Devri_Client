@@ -47,8 +47,10 @@ namespace Devri.Common
 
             if (dt.Minute == 0)
             {
+                //at O'Clock Fix 
                 if (Feeling.XAxis> 0) { Feeling.SetXAxis(-1); }
                 else { Feeling.SetXAxis(1); }
+
                 if (Feeling.XAxis <0) { Feeling.SetYAxis(-1); }
                 else { Feeling.SetYAxis(1); }
             }

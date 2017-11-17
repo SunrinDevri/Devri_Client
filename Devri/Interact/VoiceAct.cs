@@ -51,8 +51,23 @@ namespace Devri.Interact
             string result = "";
             switch (temp)
             {
+
+
+
+
+
+
                 
                 case "Schedule_Alarm":
+                    Timer_Devri td = new Timer_Devri();
+                    td.Add_Schedule(reci);
+                    result = ret["Line"].ToString().Replace("{{Task_Name}}", reci["Keyword1"].ToString());
+
+
+                    Feeling.SetXAxis(2);
+
+
+
                     break;
 
 
@@ -64,6 +79,7 @@ namespace Devri.Interact
                 case "Today":
                     result = ret["Line"].ToString();
                     TTS.TTSPOSTAsync(result);
+                    Feeling.SetYAxis(2);
                     break;
                     
                 case "Weather":
@@ -83,12 +99,14 @@ namespace Devri.Interact
                     result = KJS["Line"].ToString().Replace("{{Music}}", get_Music["name"].ToString());
                     result.Replace("{{Artist}}", get_Music["artist"].ToString());
                     TTS.TTSPOSTAsync(result);
+                    Feeling.SetXAxis(2);
                     break;
                 case "Movie_Recommand":
                     JObject get_Movie  = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:3080/movie", "DeviceID"));
                     result = KJS["Line"].ToString().Replace("{{Music}}",get_Movie["name"].ToString());
                     result.Replace("{{Artist}}", get_Movie["artist"].ToString());
                     TTS.TTSPOSTAsync(result);
+                    Feeling.SetYAxis(2);
                     break;
 
                 case "Book_Recommand":
@@ -96,6 +114,7 @@ namespace Devri.Interact
                     result = KJS["Line"].ToString().Replace("{{Book_Title}}", get_Book["name"].ToString());
                     result.Replace("{{Author}}", get_Book["artist"].ToString());
                     TTS.TTSPOSTAsync(result);
+                    Feeling.SetXAxis(2);
                     break;
 
 
@@ -103,6 +122,7 @@ namespace Devri.Interact
                     JObject get_Word = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:3080/word", "DeviceID"));
                     result = KJS["Line"].ToString().Replace("{{Word}}", get_Word["name"].ToString());
                     result.Replace("{{Author}}", get_Word["artist"].ToString()); TTS.TTSPOSTAsync(result);
+                    Feeling.SetXAxis(2);
                     break;
                 case "D-day":
                     
@@ -140,7 +160,14 @@ namespace Devri.Interact
                 case "Timer":
                     TTS.TTSPOSTAsync(result);
                     break;
-               
+
+
+
+                default:
+                    TTS.TTSPOSTAsync(ret["Line"].ToString());
+                    //Set default action
+                    break;
+                    
 
             }
             

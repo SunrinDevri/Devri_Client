@@ -11,6 +11,12 @@ namespace Devri.Common
 {
     class Recorder
     {
+
+
+
+
+
+
         //public event MediaCaptureFailedEventHandler Failed;
         //static public async Task RecordStartAsync()
         //{

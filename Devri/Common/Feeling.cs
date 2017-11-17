@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Devri.Interact;
 using Windows.Storage;
+using Devri;
 
 namespace Devri.Common
 {
@@ -28,11 +29,15 @@ namespace Devri.Common
         public static void SetXAxis(int distance)
         {
             XAxis = XAxis + distance;
+            GetStatus();
+            MainPage.Change_Image(Status,false);
              SaveFeelAsync();
         }
         public static  void  SetYAxis(int distance)
         {
             YAxis = YAxis + distance;
+            GetStatus();
+            MainPage.Change_Image(Status, false);
             SaveFeelAsync();
         }
         public int GetXAxis()

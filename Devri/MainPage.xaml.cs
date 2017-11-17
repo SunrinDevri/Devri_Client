@@ -102,6 +102,9 @@ namespace Devri
         {
             var gpio = GpioController.GetDefault();
             var dataPin = gpio.OpenPin(4);
+
+            var buttonPin = gpio.OpenPin(9999);//임의의 값
+
             //well
             //pin Opens well, but fail to read. because C# can't read signal/write signal in microseconds. (40 microsecond or less needed)
             // => how about compute fix value in code?
@@ -113,7 +116,13 @@ namespace Devri
                 var humidity = await sensor.ReadHumidity();
                 var temperature = await sensor.ReadTemperature(false);
                 Debug.WriteLine(temperature);
+                if (buttonPin.IsDriveModeSupported(GpioPinDriveMode.InputPullUp))
+                    buttonPin.SetDriveMode(GpioPinDriveMode.InputPullUp);
+                else
+                    buttonPin.SetDriveMode(GpioPinDriveMode.Input);
+
                 await Task.Delay(2000);
+
             }
         }
 
@@ -129,7 +138,7 @@ namespace Devri
         public void Timer_Start()
         {
             
-            timer = new Timer(TimerCallback, null, 0,10);
+            timer = new Timer(TimerCallback, null, 0,1000);
 
         }
 
