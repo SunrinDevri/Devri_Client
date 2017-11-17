@@ -1,20 +1,7 @@
 ﻿using Devri.Common;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using System.Runtime.CompilerServices;
-using System.ComponentModel;
 using Windows.Devices.Gpio;
 using Windows.Devices.Sensors.Temperature;
 using System.Diagnostics;
@@ -22,10 +9,10 @@ using System.Threading.Tasks;
 using System.Threading;
 using Windows.Devices.Geolocation;
 using Windows.UI.Xaml.Media.Imaging;
-using Windows.Media;
 using Devri.Interact;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
+using Windows.Media.MediaProperties;
+using Windows.UI.Core;
+
 
 // 빈 페이지 항목 템플릿에 대한 설명은 https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x412에 나와 있습니다.
 
@@ -36,6 +23,8 @@ namespace Devri
     /// </summary>
     public sealed partial class MainPage : BindablePage
     {
+
+        //temperature
         private float m_temperature;        
         public float Temperature
         {
@@ -54,6 +43,8 @@ namespace Devri
                 return string.Format("{0} C", Temperature);
             }
         }
+
+        //humidity
         private float m_humidity;
         public float Humidity
         {
@@ -73,21 +64,34 @@ namespace Devri
             }
         }
 
+
+        //geolocation point
+        private Double latitude; //위도
+        private Double longitude; //경도
+
+
+        //button
+        private GpioPinValue pushButtonValue;
+        private GpioPin pin;
+        private GpioPin pushButton;
+
+        //recorder
+
+
         public MainPage()
         {
             this.InitializeComponent();
-            SetupGeo();
             Read();
             Send();
-            Init_First_Setting();
-            Speech_Interaction();
+            Init_First_SettingAsync();
+            
             
             
         }
 
-        private void Init_First_Setting()
+        private async Task Init_First_SettingAsync()
         {
-            Feeling.InitializeFeel();
+            await Feeling.InitializeFeelAsync();
         }
 
         private void Speech_Interaction()
@@ -103,7 +107,15 @@ namespace Devri
             var gpio = GpioController.GetDefault();
             var dataPin = gpio.OpenPin(4);
 
-            var buttonPin = gpio.OpenPin(9999);//임의의 값
+            var pushButton  = gpio.OpenPin(17);//ButtonPin
+
+            if (pushButton.IsDriveModeSupported(GpioPinDriveMode.InputPullUp))
+                pushButton.SetDriveMode(GpioPinDriveMode.InputPullUp);
+            else
+                pushButton.SetDriveMode(GpioPinDriveMode.Input);
+            pushButton.DebounceTimeout = TimeSpan.FromMilliseconds(50);
+
+
 
             //well
             //pin Opens well, but fail to read. because C# can't read signal/write signal in microseconds. (40 microsecond or less needed)
@@ -116,15 +128,76 @@ namespace Devri
                 var humidity = await sensor.ReadHumidity();
                 var temperature = await sensor.ReadTemperature(false);
                 Debug.WriteLine(temperature);
-                if (buttonPin.IsDriveModeSupported(GpioPinDriveMode.InputPullUp))
-                    buttonPin.SetDriveMode(GpioPinDriveMode.InputPullUp);
-                else
-                    buttonPin.SetDriveMode(GpioPinDriveMode.Input);
+                
 
                 await Task.Delay(2000);
 
             }
+
+            
+
+
         }
+
+       
+
+        public async void PushButton_EventAsync()
+        {
+            var devices = await Windows.Devices.Enumeration.DeviceInformation.FindAllAsync(Windows.Devices.Enumeration.DeviceClass.AudioCapture);
+            var captureInitSettings = new Windows.Media.Capture.MediaCaptureInitializationSettings();
+            captureInitSettings.StreamingCaptureMode = Windows.Media.Capture.StreamingCaptureMode.AudioAndVideo;
+            var storageFile = await Windows.Storage.KnownFolders.VideosLibrary.CreateFileAsync("Voice.mp3", Windows.Storage.CreationCollisionOption.GenerateUniqueName);
+
+            //play
+            var audioCapture = new Windows.Media.Capture.MediaCapture();
+
+            await audioCapture.InitializeAsync(captureInitSettings);
+            var profile = MediaEncodingProfile.CreateM4a(Windows.Media.MediaProperties.AudioEncodingQuality.Auto);
+            await audioCapture.StartRecordToStorageFileAsync(profile, storageFile);
+
+
+            //stop
+            await audioCapture.StopRecordAsync();
+
+            //녹음 정지 버튼을 버튼 컨트롤에 맞게 해야함
+
+
+
+        }
+        public static async Task Play_Voice()
+        {
+            Windows.Storage.StorageFile voiceFile = await Windows.Storage.KnownFolders.VideosLibrary.GetFileAsync("Voice.mp3");
+            var stream = await voiceFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            if (null != stream)
+            {
+                //MP3player.SetSource(stream, voiceFile.ContentType);
+                //MP3player.Play();
+
+                //여기다가 메인페이지 조정할 거 해야됨
+            }
+        }
+        //voice timer
+        private System.Threading.Timer timer;
+        public object DisPatcher { get; private set; }
+
+        public void Timer_Start(int j)
+        {
+            TimeSpan delay = TimeSpan.FromMinutes(j);
+            //j must be a millisecond integer
+            timer = new System.Threading.Timer(timerCallback, null, 0, j);
+
+        }
+
+        private async void timerCallback(object state)
+        {
+
+            timer.Dispose();
+            
+
+        }
+
+
+        
 
 
         public async void Send()
@@ -132,24 +205,10 @@ namespace Devri
            string result = await ServerCommunication.POSTAsync(ServerCommunication.SERVER_URL+ "/auth/signup", "pin="+ Feeling.PIN +"&code="+ Feeling.CODE);
            //TTS.TTSPOSTAsync("김준수");
         }
-        public static System.Threading.Timer timer;
-        public object DisPatcher { get; private set; }
 
-        public void Timer_Start()
-        {
-            
-            timer = new Timer(TimerCallback, null, 0,1000);
+        
 
-        }
-
-        private async void TimerCallback(object state)
-        {
-            //Put Something you want to run async
-            await Window.Current.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
-            () => {
-                // do some work on UI here;
-            });
-        }
+        
 
         public static void Change_Image(int i,bool ani)
         {
@@ -201,38 +260,11 @@ namespace Devri
 
         public static Geolocator Geolocator { get; set; }
         public static bool RunningInBackground { get; set; }
-        private void SetupGeo()
-        {
-            if (Geolocator == null)
-            {
-                Geolocator = new Geolocator
-                {
-                    DesiredAccuracy = PositionAccuracy.High,
-                    MovementThreshold = 100
-                };
-                Geolocator.PositionChanged += Geolocator_PositionChanged;
-            }
-        }
-        private void Geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
-        {
-            geolocator_PositionChanged(sender, args);
-        }
+        
+        
 
-        private async void geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
-        {
-            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-            {   //Point point;
-                //point.Position.Latitude
-                String wido=args.Position.Coordinate.Latitude.ToString("0.00");
-                String gyungdo=args.Position.Coordinate.Longitude.ToString("0.00");
-            });
-
-        }
-        public static async Task PlayVoice()
-        {
-            MediaElement media = new MediaElement();
-        }
-
+       
+       
 
 
 

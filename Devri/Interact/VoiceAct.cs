@@ -103,8 +103,7 @@ namespace Devri.Interact
                     break;
                 case "Movie_Recommand":
                     JObject get_Movie  = JObject.Parse(ServerCommunication.GET("http://iwin247.kr:3080/movie", "DeviceID"));
-                    result = KJS["Line"].ToString().Replace("{{Music}}",get_Movie["name"].ToString());
-                    result.Replace("{{Artist}}", get_Movie["artist"].ToString());
+                    result = KJS["Line"].ToString().Replace("{{Movie}}",get_Movie["name"].ToString());
                     TTS.TTSPOSTAsync(result);
                     Feeling.SetYAxis(2);
                     break;

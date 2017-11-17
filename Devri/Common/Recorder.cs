@@ -11,31 +11,25 @@ namespace Devri.Common
 {
     class Recorder
     {
+        private System.Threading.Timer timer;
+        public object DisPatcher { get; private set; }
+
+        public void Timer_Start(int j)
+        {
+            TimeSpan delay = TimeSpan.FromMinutes(j);
+            //j must be a millisecond integer
+            timer = new System.Threading.Timer(timerCallback, null, 0, j);
+
+        }
+
+        private async void timerCallback(object state)
+        {
+            
+            timer.Dispose();
+            
+        }
 
 
 
-
-
-
-        //public event MediaCaptureFailedEventHandler Failed;
-        //static public async Task RecordStartAsync()
-        //{
-        //    MediaCapture mediaCapture = new MediaCapture();
-        //    bool isPreviewing;
-        //    await mediaCapture.InitializeAsync();
-        //    MediaCaptureFailedEventHandler MediaCapture_Failed = null;
-        //    mediaCapture.Failed += MediaCapture_Failed;
-
-        //}
-
-
-
-
-        //public JObject SendSound()
-        //{
-        //    String bep =ServerCommunication.POST_FILE("", "record.mp3");
-        //    JObject sep = JObject.Parse(bep);
-        //    return sep;
-        //}
     }
 }

@@ -56,11 +56,14 @@ namespace Devri.Common
             return Status;
         }
 
-        public static void InitializeFeel()
+        public static async Task InitializeFeelAsync()
         {
-            LoadFeel();
+            Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Windows.Storage.StorageFile sampleFile = await storageFolder.CreateFileAsync("save.txt", Windows.Storage.CreationCollisionOption.ReplaceExisting);
+            LoadFeelAsync();
             Check_Status();
-            FileStream fs = File.Create("save.txt");
+           
+           
         }
         public static void Check_Status()
         {
@@ -96,16 +99,19 @@ namespace Devri.Common
             await ServerCommunication.POSTAsync("http://iwin247.kr:80/device/updatestatus", "pin=" + Feeling.PIN+ "?Axis_X"+Feeling.XAxis+"?Axis_Y" + Feeling.YAxis);
 
         }
-        public static void LoadFeel()
+        public static async void LoadFeelAsync()
         {
-            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            //StorageFolder localFolder = ApplicationData.Current.LocalFolder;
             Windows.Storage.StorageFolder installedLocation = Windows.ApplicationModel.Package.Current.InstalledLocation;
-            FileStream fs = new FileStream(@"\\c$\User Folders \ LocalAppData \ c3d9ddda-8277-426a-9dec-f262be0768ad_1.0.0.0_arm__am7z1jhasv14j \ AppData \" + "save.txt", FileMode.Append);
-            StreamReader sr = new StreamReader(fs);
+            Windows.Storage.StorageFile sampleFile =  await installedLocation.CreateFileAsync("save.txt", Windows.Storage.CreationCollisionOption.OpenIfExists);
 
+            //이거 썻었다가 안되서 포기함
+            // FileStream fs = new FileStream("save.txt", FileMode.Append);
+            // StreamReader sr = new StreamReader(fs);
+            IList<string> loaded_feel =  await FileIO.ReadLinesAsync(sampleFile); //use this to read line 
 
-            XAxis = Int32.Parse(sr.ReadLine());
-            YAxis = Int32.Parse(sr.ReadLine());
+            XAxis = Int32.Parse(loaded_feel[0]);
+            YAxis = Int32.Parse(loaded_feel[1]);
         }
         public void Usersleep_Start()
         {
