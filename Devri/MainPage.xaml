@@ -1,4 +1,4 @@
-﻿<common:BindablePage
+﻿<Page
     xmlns:local="using:Devri"
     x:Class="Devri.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -11,20 +11,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <TextBlock Text="{x:Bind DisplayTemperature, Mode=OneWay}" FontSize="50"/>
-            <TextBlock Text="{x:Bind DisplayHumidity, Mode=OneWay}" FontSize="50"/>
-            <TextBlock x:Name="Time" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        </StackPanel>
         <Image x:Name="image" HorizontalAlignment="Left" Height="863.975" Margin="278.141,-144.347,0,-239.628" VerticalAlignment="Top" Width="512.191" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Source="Resources/devri_normal.gif">
             <Image.RenderTransform>
                 <CompositeTransform Rotation="90.00"/>
             </Image.RenderTransform>
         </Image>
-        <MediaElement
-            x:Name="MP3player"
-            Visibility="Collapsed"
-            />
-
     </Grid>
-</common:BindablePage>
+</Page>

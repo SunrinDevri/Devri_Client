@@ -62,20 +62,11 @@ namespace Devri.Interact
                     Timer_Devri td = new Timer_Devri();
                     td.Add_Schedule(reci);
                     result = ret["Line"].ToString().Replace("{{Task_Name}}", reci["Keyword1"].ToString());
-
-
                     Feeling.SetXAxis(2);
 
 
 
                     break;
-
-
-                
-
-
-
-
                 case "Today":
                     result = ret["Line"].ToString();
                     TTS.TTSPOSTAsync(result);
