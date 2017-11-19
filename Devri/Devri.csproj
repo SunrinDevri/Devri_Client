@@ -52,6 +52,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <OutputPath>bin\ARM\Release\</OutputPath>
@@ -96,8 +97,19 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\BindablePage.cs" />
+    <Compile Include="Common\Alarm.cs" />
+    <Compile Include="Common\Feeling.cs" />
+    <Compile Include="Common\Recorder.cs" />
+    <Compile Include="Common\StringToFomular.cs" />
+    <Compile Include="Common\Timer_Devri.cs" />
     <Compile Include="Driver\DHTDriver.cs" />
+    <Compile Include="Driver\Moodlamp.cs" />
     <Compile Include="Driver\SensorTypes.cs" />
+    <Compile Include="GPS\GroundPosit.cs" />
+    <Compile Include="Interact\ServerCommunication.cs" />
+    <Compile Include="Interact\TTS.cs" />
+    <Compile Include="Interact\VoiceAct.cs" />
+    <Compile Include="Interact\SoundtoText.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -108,6 +120,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Devri_TemporaryKey.pfx" />
+    <None Include="Resources\Scripts.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
@@ -118,6 +131,15 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Resources\confused.png" />
+    <Content Include="Resources\devri_angry.gif" />
+    <Content Include="Resources\devri_Confused.gif" />
+    <Content Include="Resources\devri_normal.gif" />
+    <Content Include="Resources\devri_smile.gif" />
+    <Content Include="Resources\normal.png" />
+    <Content Include="Resources\smile.png" />
+    <Content Include="Resources\yan.png" />
+    <Content Include="save.txt" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -133,6 +155,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>5.4.0</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="WindowsIoT, Version=10.0.15063.0">
@@ -143,8 +168,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Skype\" />
+    <Reference Include="Heliosky.IoT.GPS">
+      <HintPath>..\..\..\Heliosky.IoT.GPS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
