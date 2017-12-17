@@ -113,22 +113,22 @@ namespace Devri.Common
             XAxis = Int32.Parse(loaded_feel[0]);
             YAxis = Int32.Parse(loaded_feel[1]);
         }
-        public void Usersleep_Start()
-        {
-            LastestTime = DateTime.Now;
-        }
-        public void Usersleep_End()
-        {
-            ServerCommunication.GET("http://iwin247.kr:80/usersleep/end", "Device Code");
-            EndTime = DateTime.Now;
-            
-        }
         public void Update_image(int stat)
         {
-            MainPage.Change_Image(stat,false);
+            MainPage.Change_Image(stat, false);
         }
         public static JObject Dday;
-        public void Add_DDay() {  }
-        public void Delete_DDay() { }
+        public void Add_DDay(DateTime at,string name)
+        {
+            
+            Dday.Add("Name",name);
+            Dday.Add("Year", at.Year);
+            Dday.Add("Name", at.Month);
+            Dday.Add("Name", at.Day);
+        }
+        
+
     }
-}
+        
+        
+ }

@@ -13,33 +13,32 @@ using System.Data;
 
 namespace Devri.Interact
 {
+
+
     class VoiceAct
     {
+        public static readonly String[] day = {"오늘","내일","모래","글피","다음주"};
+        public static readonly String[] pmam = { "오전", "오후" };
+        public static readonly String[] time = {"1시","2시", "3시", "4시", "5시", "6시", "7시", "8시", "9시", "10시", "11시", "12시"};
         public static String locate = @"Resource/Scripts.json";
-        public String LineSelector (JObject reci) {
-            List<JObject> ScriptList = new List<JObject>();
+        public string LineSelector (JArray reci) {
+            List<JObject> wordlist = new List<JObject>();
             Random rd = new Random();
-            String locate = Directory.GetCurrentDirectory();
-            locate = Path.GetDirectoryName(Path.GetDirectoryName(locate)) + @"Resources/Scripts.json";
-            StreamReader file = File.OpenText(locate);
-            var data = file.ReadToEnd();
-            JArray Scripts = JArray.Parse(data);
-            foreach (JObject itemObj in Scripts.Children<JObject>())
-            {
-                if (itemObj["Situation1"].ToString() == reci["Situaion1"].ToString() &&(
-                    (itemObj["Feeling"].Contains(feel_table[GetStatus()]))||itemObj["Feeling"].Equals("All")))
-                {
-                    ScriptList.Add(itemObj);
-                }
-                
-            }
-            //JObject ret = ScriptList[rd.Next(0, ScriptList.Count)];
 
+            // switch (reci[0]["text"].ToString())
+            //{
 
+            //}
+            DateTime atTime = DateTime.Now;
+            if (reci[0]["text"].ToString().Equals(day[0])) { }
+            else if (reci[0]["text"].ToString().Equals(day[1])) { atTime.AddDays(1); }
+            else if (reci[0]["text"].ToString().Equals(day[2])) { atTime.AddDays(2); }
+            else if (reci[0]["text"].ToString().Equals(day[3])) { atTime.AddDays(3); }
+            else if (reci[0]["text"].ToString().Equals(day[4])) { atTime.AddDays(7); }
 
+            if (reci[1]["text"].ToString().Equals(pmam[0])) { }
 
-
-            return "";
+            return "잘 모르겠네요";
 
         }
 
