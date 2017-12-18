@@ -36,7 +36,27 @@ namespace Devri.Interact
             else if (reci[0]["text"].ToString().Equals(day[3])) { atTime.AddDays(3); }
             else if (reci[0]["text"].ToString().Equals(day[4])) { atTime.AddDays(7); }
 
-            if (reci[1]["text"].ToString().Equals(pmam[0])) { }
+
+
+
+
+            else if (reci[0]["text"].ToString().Equals("영화") && reci[1]["text"].ToString().Equals("추천")) {/*영화 추천*/ }
+            else if (reci[0]["text"].ToString().Equals("책") && reci[1]["text"].ToString().Equals("추천")) {/*도서 추천*/ }
+            else if (reci[0]["text"].ToString().Equals("음악") && reci[1]["text"].ToString().Equals("추천")) {/*음악 추천*/ }
+            else if (reci[0]["text"].ToString().Equals("오늘의") && reci[1]["text"].ToString().Equals("영단어")) {/*단어 추천*/ }
+            else if (/*디 데이 등록*/true) { }
+            else if (/*디 데이 확인*/true) { }
+            else if (/*상태 확인*/true) { }
+
+            else if (reci[1]["text"].ToString().Equals(pmam[0])) { atTime.AddHours(-1 * atTime.Hour); }
+            else if (reci[1]["text"].ToString().Equals(pmam[1])) { atTime.AddHours((-1 * atTime.Hour) + 12); }
+            else if (true) {/*날씨*/}
+            else if (true) { /*끄기*/}
+            else if (true) { /*계산기*/}
+            else if (true) {/*날짜 반환*/ }
+
+
+
 
             return "잘 모르겠네요";
 
@@ -121,33 +141,33 @@ namespace Devri.Interact
                 case "MoodLamp":
                     //led
                     result = ret["Line"].ToString();
-                    TTS.TTSPOSTAsync(result);
+                    
 
                     break;           
                 case "Status_Check":
                     result = ret["Line"].ToString();
-                    TTS.TTSPOSTAsync(result);
+                    
                     //finished
                     break;
                 case "Disable":
                     result = ret["Line"].ToString();
-                    TTS.TTSPOSTAsync(result);
+                    
                     //Disable Code
                     break;
 
                 case "Traffic_Info":
                     JArray get_traffic = JArray.Parse(ServerCommunication.GET("http://iwin247.kr:3080/traffic", reci["keyword1"].ToString()));
-                    TTS.TTSPOSTAsync( Event_Traffic_Info(ret, get_traffic,reci)); 
+                    
                     //finished
                     break;
                 case "Calculator":
                     double Output =StringToFormula.Eval(reci["Keyword1"].ToString());
                     result = ret["Line"].ToString().Replace("{{Result}}", Output.ToString());
-                    TTS.TTSPOSTAsync(result); 
+                    
                     //finisihed
                     break;
                 case "Timer":
-                    TTS.TTSPOSTAsync(result);
+                    
                     break;
 
 

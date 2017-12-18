@@ -121,10 +121,11 @@ namespace Devri.Common
         public void Add_DDay(DateTime at,string name)
         {
             
-            Dday.Add("Name",name);
+            Dday.Add("Name", name);
             Dday.Add("Year", at.Year);
             Dday.Add("Name", at.Month);
             Dday.Add("Name", at.Day);
+
         }
         
 

@@ -100,7 +100,6 @@
     <Compile Include="Common\BindablePage.cs" />
     <Compile Include="Common\Alarm.cs" />
     <Compile Include="Common\Feeling.cs" />
-    <Compile Include="Common\Recorder.cs" />
     <Compile Include="Common\StringToFomular.cs" />
     <Compile Include="Common\Timer_Devri.cs" />
     <Compile Include="Driver\DHTDriver.cs" />
