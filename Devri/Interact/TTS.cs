@@ -8,6 +8,7 @@ using System.Net;
 using Windows.Storage.Streams;
 using System.Net.Http;
 using Windows.Storage;
+using System.Net.Http.Headers;
 
 namespace Devri.Interact
 {
@@ -38,44 +39,60 @@ namespace Devri.Interact
         //    }
         //    Console.WriteLine("c:/tts.mp3 was created");
         //}
-        public static async void TTSPOSTAsync( string Content)
+        public static async Task<string> TTSPOSTAsync(string Content)
         {
-            try
+            using (HttpClient httpClient = new HttpClient())
             {
-                string RealContent = "speaker=mijin&speed=0&text="+Content;
-                string url = "https://openapi.naver.com/v1/voice/tts.bin";
-                Windows.Web.Http.HttpClient client = new Windows.Web.Http.HttpClient();
-                var body = RealContent;
-                Windows.Web.Http.HttpStringContent theContent = new Windows.Web.Http.HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/x-www-form-urlencoded");
+                httpClient.BaseAddress = new Uri(@"https://openapi.naver.com/v1/voice/tts.bin");
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
+                httpClient.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("utf-8"));
+                httpClient.DefaultRequestHeaders.TryAddWithoutValidation("X-Naver-Client-Id", "VLwfoTWl4e8GQ5_9JU35");
+                httpClient.DefaultRequestHeaders.TryAddWithoutValidation("X-Naver-Client-Secret", "fzoBsRF0_M");
+                string endpoint = @"";
 
-                theContent.Headers["Content-Length"] = body.Length.ToString();
-                theContent.Headers["X-Naver-Client-Id"] = "VLwfoTWl4e8GQ5_9JU35";
-                theContent.Headers["X-Naver-Client-Secret"] = "fzoBsRF0_M";
-                Windows.Web.Http.HttpResponseMessage aResponse = await client.PostAsync(new Uri(url), theContent);
-
-
-                if (aResponse.StatusCode == Windows.Web.Http.HttpStatusCode.Ok && aResponse != null)
+                try
                 {
-                    using (InMemoryRandomAccessStream stream1 = new InMemoryRandomAccessStream())
+                    byte[] bytes = Encoding.UTF8.GetBytes("speaker=mijin&speed=0&text=" + Content);
+                    HttpContent content = new StringContent("speaker=mijin&speed=0&text=" + Content, Encoding.UTF8, "application/x-www-form-urlencoded");
+                    HttpContent byteContent = new ByteArrayContent(bytes);
+                    HttpResponseMessage response = await httpClient.PostAsync(endpoint, content);
+
+                    if (response.IsSuccessStatusCode)
                     {
-                        await aResponse.Content.WriteToStreamAsync(stream1);
-                        FileStream fs = new FileStream("voice.mp3", FileMode.Append);
-                        StorageFile file1 = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFileAsync("voice.mp3", CreationCollisionOption.ReplaceExisting);
-                        //                      내가 수정해야 할 부분
-                        using (var fileStream1 = await file1.OpenAsync(FileAccessMode.ReadWrite))
+                        string Response = await response.Content.ReadAsStringAsync();
+                        //do something with json response here
+                        using (InMemoryRandomAccessStream stream1 = new InMemoryRandomAccessStream())
                         {
-                            await RandomAccessStream.CopyAndCloseAsync(stream1.GetInputStreamAt(0), fileStream1.GetOutputStreamAt(0));
+                            var stream = await response.Content.ReadAsStreamAsync();
+                          
+                            StorageFile file1 = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFileAsync("Voice.mp3", CreationCollisionOption.ReplaceExisting);
+                            //                      내가 수정해야 할 부분
+                            using (var fileStream1 = await file1.OpenAsync(FileAccessMode.ReadWrite))
+                            {
+                                await RandomAccessStream.CopyAndCloseAsync(stream.AsInputStream(), fileStream1.GetOutputStreamAt(0));
+                            }
                         }
                     }
                 }
-
-                await MainPage.Play_Voice();
-
+                catch (Exception e)
+                {
+                    //Could not connect to server
+                    //Use more specific exception handling, this is just an example
+                    Console.WriteLine(e.Message);
+                }
             }
-            catch (WebException we)
-            {
-            }
+
+            
+            return "";
+
+
         }
-        
+
+       
+
+
+
     }
+
 }
+

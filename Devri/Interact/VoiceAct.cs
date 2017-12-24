@@ -13,33 +13,52 @@ using System.Data;
 
 namespace Devri.Interact
 {
+
+
     class VoiceAct
     {
+        public static readonly String[] day = {"오늘","내일","모래","글피","다음주"};
+        public static readonly String[] pmam = { "오전", "오후" };
+        public static readonly String[] time = {"1시","2시", "3시", "4시", "5시", "6시", "7시", "8시", "9시", "10시", "11시", "12시"};
         public static String locate = @"Resource/Scripts.json";
-        public String LineSelector (JObject reci) {
-            List<JObject> ScriptList = new List<JObject>();
+        public string LineSelector (JArray reci) {
+            List<JObject> wordlist = new List<JObject>();
             Random rd = new Random();
-            String locate = Directory.GetCurrentDirectory();
-            locate = Path.GetDirectoryName(Path.GetDirectoryName(locate)) + @"Resources/Scripts.json";
-            StreamReader file = File.OpenText(locate);
-            var data = file.ReadToEnd();
-            JArray Scripts = JArray.Parse(data);
-            foreach (JObject itemObj in Scripts.Children<JObject>())
-            {
-                if (itemObj["Situation1"].ToString() == reci["Situaion1"].ToString() &&(
-                    (itemObj["Feeling"].Contains(feel_table[GetStatus()]))||itemObj["Feeling"].Equals("All")))
-                {
-                    ScriptList.Add(itemObj);
-                }
-                
-            }
-            //JObject ret = ScriptList[rd.Next(0, ScriptList.Count)];
+
+            // switch (reci[0]["text"].ToString())
+            //{
+
+            //}
+            DateTime atTime = DateTime.Now;
+            if (reci[0]["text"].ToString().Equals(day[0])) { }
+            else if (reci[0]["text"].ToString().Equals(day[1])) { atTime.AddDays(1); }
+            else if (reci[0]["text"].ToString().Equals(day[2])) { atTime.AddDays(2); }
+            else if (reci[0]["text"].ToString().Equals(day[3])) { atTime.AddDays(3); }
+            else if (reci[0]["text"].ToString().Equals(day[4])) { atTime.AddDays(7); }
 
 
 
 
 
-            return "";
+            else if (reci[0]["text"].ToString().Equals("영화") && reci[1]["text"].ToString().Equals("추천")) {/*영화 추천*/ }
+            else if (reci[0]["text"].ToString().Equals("책") && reci[1]["text"].ToString().Equals("추천")) {/*도서 추천*/ }
+            else if (reci[0]["text"].ToString().Equals("음악") && reci[1]["text"].ToString().Equals("추천")) {/*음악 추천*/ }
+            else if (reci[0]["text"].ToString().Equals("오늘의") && reci[1]["text"].ToString().Equals("영단어")) {/*단어 추천*/ }
+            else if (/*디 데이 등록*/true) { }
+            else if (/*디 데이 확인*/true) { }
+            else if (/*상태 확인*/true) { }
+
+            else if (reci[1]["text"].ToString().Equals(pmam[0])) { atTime.AddHours(-1 * atTime.Hour); }
+            else if (reci[1]["text"].ToString().Equals(pmam[1])) { atTime.AddHours((-1 * atTime.Hour) + 12); }
+            else if (true) {/*날씨*/}
+            else if (true) { /*끄기*/}
+            else if (true) { /*계산기*/}
+            else if (true) {/*날짜 반환*/ }
+
+
+
+
+            return "잘 모르겠네요";
 
         }
 
@@ -122,33 +141,33 @@ namespace Devri.Interact
                 case "MoodLamp":
                     //led
                     result = ret["Line"].ToString();
-                    TTS.TTSPOSTAsync(result);
+                    
 
                     break;           
                 case "Status_Check":
                     result = ret["Line"].ToString();
-                    TTS.TTSPOSTAsync(result);
+                    
                     //finished
                     break;
                 case "Disable":
                     result = ret["Line"].ToString();
-                    TTS.TTSPOSTAsync(result);
+                    
                     //Disable Code
                     break;
 
                 case "Traffic_Info":
                     JArray get_traffic = JArray.Parse(ServerCommunication.GET("http://iwin247.kr:3080/traffic", reci["keyword1"].ToString()));
-                    TTS.TTSPOSTAsync( Event_Traffic_Info(ret, get_traffic,reci)); 
+                    
                     //finished
                     break;
                 case "Calculator":
                     double Output =StringToFormula.Eval(reci["Keyword1"].ToString());
                     result = ret["Line"].ToString().Replace("{{Result}}", Output.ToString());
-                    TTS.TTSPOSTAsync(result); 
+                    
                     //finisihed
                     break;
                 case "Timer":
-                    TTS.TTSPOSTAsync(result);
+                    
                     break;
 
 

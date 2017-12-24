@@ -105,7 +105,9 @@ namespace Devri.Common
         }
         public static string D_DAY_Calculate(JObject reci)
         {
-            return "";
+            DateTime time = DateTime.Now;
+            int left_day = 0;
+            return left_day.ToString();
         }
         
     }

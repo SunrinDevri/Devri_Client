@@ -23,7 +23,7 @@ namespace Devri.Common
 
         private async void timerCallback(object state)
         {
-            TTS.TTSPOSTAsync("");
+            //TTS.TTSPOSTAsync("");
             timer.Dispose();
             await Window.Current.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
             () => {

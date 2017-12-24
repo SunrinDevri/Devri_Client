@@ -40,18 +40,18 @@ namespace Devri.Interact
                     FileName = Filename,
                     Name = "file"
                 };
-                scontent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
+                scontent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("audio/wav");
                 var client = new HttpClient();
                 var multi = new MultipartFormDataContent();
                 multi.Add(scontent);
 
-                client.BaseAddress = new Uri("http://iwin247.kr");
+                client.BaseAddress = new Uri(URL);
                 var result = client.PostAsync("upload/", multi).Result;
                 return result.Content.ReadAsStringAsync().Result;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return "error";
+                return e.ToString();
             }
 
         }

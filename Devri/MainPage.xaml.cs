@@ -17,6 +17,14 @@ using Windows.Storage;
 using System.Net;
 using System.Text;
 using System.IO;
+using System.Net.Http;
+using NAudio.Wave;
+using Windows.Media.Audio;
+using Windows.Media.Render;
+using Windows.Media.Devices;
+using Windows.Media.Capture;
+using Windows.Storage.Pickers;
+using System.Collections.Generic;
 
 
 // 빈 페이지 항목 템플릿에 대한 설명은 https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x412에 나와 있습니다.
@@ -47,33 +55,42 @@ namespace Devri
         private GpioPin pushButton;
 
         //recorder
-
-        private static readonly string API_KEY = "AIzaSyCMPY7lNMZVSGPK9JE9_O1BGsnTtB4t3TA";
-
+        // private static MediaElement PlayMusic = new MediaElement();
+        static MediaElement player = new MediaElement();
         public static async Task<string> STTAsync(string Content)
         {
             try
             {
                 Windows.Web.Http.HttpClient client = new Windows.Web.Http.HttpClient();
                 var body = Content;
+                var Folder = ApplicationData.Current.LocalFolder;
+                var File = await Folder.GetFileAsync("Voice.wav");
+                var stream = await File.OpenAsync(FileAccessMode.Read);
+                //Windows.Web.Http.HttpStreamContent content = new Windows.Web.Http.HttpStreamContent(stream);
                 Windows.Web.Http.HttpStringContent theContent = new Windows.Web.Http.HttpStringContent(body, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json");
-                theContent.Headers["Content-Length"] = body.Length.ToString();
-                Windows.Web.Http.HttpResponseMessage aResponse = await client.PostAsync(new Uri("https://speech.googleapis.com/v1/speech:recognize?KEY="+API_KEY), theContent);
+                theContent.Headers["Content-Length"] = Content.Length.ToString();
+                //theContent.Headers.Append("Authorization","Bearer 60e04b73ba24193960baede7472e2ad2c99cd3c0");
+                Windows.Web.Http.HttpResponseMessage aResponse = await client.GetAsync(new Uri("http://iwin247.kr/sounds"));
 
                 var responseString = aResponse.Content.ToString();//new StreamReader(aResponse.Source.).ReadToEnd();
                 return responseString;
             }
-            catch (WebException we)
+            catch (Exception e)
             {
                 //Console.WriteLine(((HttpWebResponse)we.Response).StatusCode);
+                Console.WriteLine(e.Message);
                 return "";
             }
         }
 
+
+
+
+
         public static string Build_Content(string base64_String)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(@"{ ""config"" : { { ""encoding"" : {FLAC}, ""sampleRateHertz"" : 16000, ""languageCode"" : ""ko-KR"" }, ""audio"": { {" + base64_String +"} }, }");
+            sb.Append(base64_String);
             return sb.ToString();
         }
 
@@ -81,7 +98,7 @@ namespace Devri
         {
             this.InitializeComponent();
             ReadAsync();
-            Send();
+            Change_Image(3, false);
             //Init_First_SettingAsync();
 
 
@@ -110,17 +127,18 @@ namespace Devri
 
             capture = new Windows.Media.Capture.MediaCapture();
             await capture.InitializeAsync(captureInitSettings);
-            var profile = MediaEncodingProfile.CreateFlac(AudioEncodingQuality.Auto);
+            var profile = MediaEncodingProfile.CreateWav(AudioEncodingQuality.Auto);
             try
             {
-                var storageFile = await ApplicationData.Current.LocalFolder.CreateFileAsync("Voice.flac", Windows.Storage.CreationCollisionOption.ReplaceExisting);
-                recording = await capture.PrepareLowLagRecordToStorageFileAsync(MediaEncodingProfile.CreateFlac(AudioEncodingQuality.High), storageFile);
+                var storageFile = await ApplicationData.Current.LocalFolder.CreateFileAsync("Voice.wav", Windows.Storage.CreationCollisionOption.ReplaceExisting);
+                recording = await capture.PrepareLowLagRecordToStorageFileAsync(MediaEncodingProfile.CreateWav(AudioEncodingQuality.High), storageFile);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
         }
+
         public async void ReadAsync()
         {
             var gpio = GpioController.GetDefault();
@@ -140,32 +158,6 @@ namespace Devri
             pin.SetDriveMode(GpioPinDriveMode.Output);
             pin.Write(pushButtonValue = GpioPinValue.Low);
             //await RecordInitializer();
-
-
-
-            // await capture.StartRecordToStorageFileAsync(profile, storageFile);
-
-
-            //well
-            //pin Opens well, but fail to read. because C# can't read signal/write signal in microseconds. (40 microsecond or less needed)
-            // => how about compute fix value in code?
-            // => we will exhibit this in PC-8 or PC-10, there's temperature will be 25 degrees i think.
-            // => Just return 25C and 40% humidty. (of course randomly do something)
-            //  var sensor = new DHT11(dataPin, SensorTypes.DHT11);
-            //  for (int i = 1; i < 100; i++)
-            //  {
-            //      var humidity = await sensor.ReadHumidity();
-            //      var temperature = await sensor.ReadTemperature(false);
-            //      Debug.WriteLine(temperature);
-
-
-            //      await Task.Delay(2000);
-
-            //  }
-
-
-
-
         }
 
         private async void buttonPin_ValueChangedAsync(GpioPin sender, GpioPinValueChangedEventArgs e)
@@ -200,20 +192,75 @@ namespace Devri
                             {
                                 await recording.StopAsync();
                                 await recording.FinishAsync();
-                                
+
                                 MediaElement me = new MediaElement();
 
                                 var Folder = ApplicationData.Current.LocalFolder;
-                                var File = await Folder.GetFileAsync("Voice.flac");
+                                var File = await Folder.GetFileAsync("Voice.wav");
+
+
+
+                                if (File != null)
+                                {
+                                    var result = await AudioGraph.CreateAsync(
+                                           new AudioGraphSettings(AudioRenderCategory.Speech));
+
+                                    if (result.Status == AudioGraphCreationStatus.Success)
+                                    {
+                                        this.graph = result.Graph;
+
+                                        var microphone = await DeviceInformation.CreateFromIdAsync(
+                                          MediaDevice.GetDefaultAudioCaptureId(AudioDeviceRole.Default));
+
+                                        // In my scenario I want 16K sampled, mono, 16-bit output
+                                        var outProfile = MediaEncodingProfile.CreateWav(AudioEncodingQuality.Low);
+                                        outProfile.Audio = AudioEncodingProperties.CreatePcm(8000, 1, 16);
+
+                                        var outputResult = await this.graph.CreateFileOutputNodeAsync(File,
+                                          outProfile);
+
+                                        if (outputResult.Status == AudioFileNodeCreationStatus.Success)
+                                        {
+                                            this.outputNode = outputResult.FileOutputNode;
+
+                                            var inProfile = MediaEncodingProfile.CreateWav(AudioEncodingQuality.High);
+
+                                            var inputResult = await this.graph.CreateDeviceInputNodeAsync(
+                                              MediaCategory.Speech,
+                                              inProfile.Audio,
+                                              microphone);
+
+                                            if (inputResult.Status == AudioDeviceNodeCreationStatus.Success)
+                                            {
+                                                inputResult.DeviceInputNode.AddOutgoingConnection(
+                                                  this.outputNode);
+
+                                                this.graph.Start();
+                                            }
+                                        }
+                                    }
+                                }
+
+
+
+
+
                                 var stream = await File.OpenAsync(FileAccessMode.Read);
                                 var encoding = System.Text.Encoding.UTF8;
-                                string response = await STTAsync(Build_Content(Convert.ToBase64String(encoding.GetBytes(stream.ToString()))));
+
+                                //  string response = GET_String("http://iwin247.kr/sound/base64=",Convert.ToBase64String(encoding.GetBytes(stream.ToString())));
+
+
+                                
+                                string response = ServerCommunication.POST_FILE("http://iwin247.info:3080/sounds", File.Path);//Maybe It works ??
+
                                 Console.WriteLine(response);
-                                    if (null != stream)
-                                    {
-                                        me.SetSource(stream, File.ContentType);
-                                        me.Play();
-                                    }
+
+                                if (null != stream)
+                                {
+                                    me.SetSource(stream, File.ContentType);
+                                    me.Play();
+                                }
                             });
                         }
                         catch (Exception ex)
@@ -228,34 +275,40 @@ namespace Devri
         }
 
 
-        public async void PushButton_EventAsync()
+        public string GET_String(String URL, String Content)
         {
-
-
-            //play
-
-
-
-
-
-            //stop
-
-
-            //녹음 정지 버튼을 버튼 컨트롤에 맞게 해야함
-
-
-
-        }
-        public static async Task Play_Voice()
-        {
-            Windows.Storage.StorageFile voiceFile = await Windows.Storage.KnownFolders.VideosLibrary.GetFileAsync("Voice.mp3");
-            var stream = await voiceFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
-            if (null != stream)
+            var request = (HttpWebRequest)WebRequest.Create(URL + Content);
+            try
             {
-                //MP3player.SetSource(stream, voiceFile.ContentType);
-                //MP3player.Play();
+                var response = request.GetResponseAsync();
+                var responseString = new StreamReader(response.Result.GetResponseStream()).ReadToEnd();
+                return responseString;
+            }
+            catch (WebException we)
+            {
+                return "";
+            }
+        }
 
-                //여기다가 메인페이지 조정할 거 해야됨
+
+        public async Task Play_Voice()
+        {
+            Windows.Storage.StorageFile voiceFile = await ApplicationData.Current.LocalFolder.GetFileAsync("Voice.mp3");
+            // var stream = await voiceFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            if (null != voiceFile)
+            {
+                try
+                {
+                    player.SetSource(await voiceFile.OpenAsync(FileAccessMode.Read), voiceFile.ContentType);
+                    player.Volume = 100.0f;
+
+
+                    player.Play();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
         }
         //voice timer
@@ -280,25 +333,103 @@ namespace Devri
 
 
 
-
-
-        public async void Send()
+        async void OnStart(object sender, RoutedEventArgs e)
         {
-            // string result = await ServerCommunication.POSTAsync(ServerCommunication.SERVER_URL+ "/auth/signup", "pin="+ Feeling.PIN +"&code="+ Feeling.CODE);
-            //TTS.TTSPOSTAsync("김준수");
+            var file = await this.PickFileAsync();
+
+            if (file != null)
+            {
+                var result = await AudioGraph.CreateAsync(
+                       new AudioGraphSettings(AudioRenderCategory.Speech));
+
+                if (result.Status == AudioGraphCreationStatus.Success)
+                {
+                    this.graph = result.Graph;
+
+                    var microphone = await DeviceInformation.CreateFromIdAsync(
+                      MediaDevice.GetDefaultAudioCaptureId(AudioDeviceRole.Default));
+
+                    // In my scenario I want 16K sampled, mono, 16-bit output
+                    var outProfile = MediaEncodingProfile.CreateWav(AudioEncodingQuality.Low);
+                    outProfile.Audio = AudioEncodingProperties.CreatePcm(8000, 1, 16);
+
+                    var outputResult = await this.graph.CreateFileOutputNodeAsync(file,
+                      outProfile);
+
+                    if (outputResult.Status == AudioFileNodeCreationStatus.Success)
+                    {
+                        this.outputNode = outputResult.FileOutputNode;
+
+                        var inProfile = MediaEncodingProfile.CreateWav(AudioEncodingQuality.High);
+
+                        var inputResult = await this.graph.CreateDeviceInputNodeAsync(
+                          MediaCategory.Speech,
+                          inProfile.Audio,
+                          microphone);
+
+                        if (inputResult.Status == AudioDeviceNodeCreationStatus.Success)
+                        {
+                            inputResult.DeviceInputNode.AddOutgoingConnection(
+                              this.outputNode);
+
+                            this.graph.Start();
+                        }
+                    }
+                }
+            }
+        }
+
+
+        async void OnStop(object sender, RoutedEventArgs e)
+        {
+            if (this.graph != null)
+            {
+                this.graph?.Stop();
+
+                await this.outputNode.FinalizeAsync();
+
+                // assuming that disposing the graph gets rid of the input/output nodes?
+                this.graph?.Dispose();
+
+                this.graph = null;
+            }
+        }
+        async Task<StorageFile> PickFileAsync()
+        {
+            FileSavePicker picker = new FileSavePicker();
+            picker.FileTypeChoices.Add("Wave File (PCM)", new List<string> { ".wav" });
+            picker.SuggestedStartLocation = PickerLocationId.Desktop;
+
+            var file = await picker.PickSaveFileAsync();
+
+            return (file);
+        }
+        AudioGraph graph;
+        AudioFileOutputNode outputNode;
+
+
+
+
+
+
+        public async void Send(string line)
+        {
+
+            string result = await TTS.TTSPOSTAsync(line);
+            await Play_Voice();
         }
 
         public static void Change_Image(int i, bool ani)
         {
             Image img = new Image();
-            BitmapImage Devri_Common_ani = new BitmapImage(new Uri(@"Resources/devri_normal.gif"));
-            BitmapImage Devri_Positive_ani = new BitmapImage(new Uri(@"Resources/devri_smile.gif"));
-            BitmapImage Devri_Angry_ani = new BitmapImage(new Uri(@"Resources/devri_angry.gif"));
-            BitmapImage Devri_Sad_ani = new BitmapImage(new Uri(@"Resources/devri_Confused.gif"));
-            BitmapImage Devri_Common = new BitmapImage(new Uri(@"Resources/normal.png"));
-            BitmapImage Devri_Positive = new BitmapImage(new Uri(@"Resources/smile.png"));
-            BitmapImage Devri_Angry = new BitmapImage(new Uri(@"Resources/yan.png"));
-            BitmapImage Devri_Sad = new BitmapImage(new Uri(@"Resources/confused.png"));
+            BitmapImage Devri_Common_ani = new BitmapImage(new Uri("ms-appx:///Resources/devri_normal.gif", UriKind.Absolute));//여기 고쳐야함
+            BitmapImage Devri_Positive_ani = new BitmapImage(new Uri("ms-appx:///Resources/devri_smile.gif", UriKind.Absolute));
+            BitmapImage Devri_Angry_ani = new BitmapImage(new Uri("ms-appx:///Resources/devri_angry.gif", UriKind.Absolute));
+            BitmapImage Devri_Sad_ani = new BitmapImage(new Uri("ms-appx:///Resources/devri_Confused.gif", UriKind.Absolute));
+            BitmapImage Devri_Common = new BitmapImage(new Uri("ms-appx:///Resources/normal.png", UriKind.Absolute));
+            BitmapImage Devri_Positive = new BitmapImage(new Uri("ms-appx:///Resources/smile.png", UriKind.Absolute));
+            BitmapImage Devri_Angry = new BitmapImage(new Uri("ms-appx:///Resources/yan.png", UriKind.Absolute));
+            BitmapImage Devri_Sad = new BitmapImage(new Uri("ms-appx:///Resources/confused.png", UriKind.Absolute));
             switch (i)
             {
                 // 0 = Normal 1=Positive 2=Angry 3=Sad 
